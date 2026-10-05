@@ -1,0 +1,37 @@
+[
+  {
+    "title": "HEATSCAPE",
+    "src": "assets/slide-01.png",
+    "style": "left:-0.00000615%;top:0.00000000%;width:103.36134966%;height:102.50000000%"
+  },
+  {
+    "title": "Energy support must reach those who need it most",
+    "src": "assets/slide-02.png",
+    "style": "left:-0.42017101%;top:0.00000000%;width:103.36134966%;height:102.50000000%"
+  },
+  {
+    "title": "Transforming raw public data into actionable decision support",
+    "src": "assets/slide-03.png",
+    "style": "left:-0.62500000%;top:-0.20312773%;width:103.56617864%;height:102.70312773%"
+  },
+  {
+    "title": "The evidence exists, but it remains trapped in isolated layers",
+    "src": "assets/slide-04.png",
+    "style": "left:-0.62500000%;top:-0.20312773%;width:103.56617864%;height:102.70312773%"
+  },
+  {
+    "title": "Moving from static points to dynamic, footprint-based assessments",
+    "src": "assets/slide-05.png",
+    "style": "left:-0.42017101%;top:0.00000000%;width:103.36134966%;height:102.50000000%"
+  },
+  {
+    "title": "Translating statistical outliers into physical addresses",
+    "src": "assets/slide-06.png",
+    "style": "left:-0.62500000%;top:-0.20312773%;width:103.56617864%;height:102.70312773%"
+  },
+  {
+    "title": "HEATSCAPE supports investigation; it does not automate judgement",
+    "src": "assets/slide-07.png",
+    "style": "left:-0.42017101%;top:0.00000000%;width:103.36134966%;height:102.50000000%"
+  }
+]
