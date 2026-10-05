@@ -1,0 +1,589 @@
+{
+  "source": "OpenStreetMap place nodes",
+  "timestamp": "2026-10-05T01:34:51Z",
+  "attribution": "OpenStreetMap contributors, ODbL",
+  "places": [
+    {
+      "id": "2089502095",
+      "name": "Abbotsford",
+      "kind": "suburb",
+      "point": [
+        14079.49,
+        5183.51
+      ],
+      "aliases": []
+    },
+    {
+      "id": "2597776629",
+      "name": "Albert Park",
+      "kind": "suburb",
+      "point": [
+        10502.42,
+        9774.44
+      ],
+      "aliases": []
+    },
+    {
+      "id": "2594694487",
+      "name": "Armadale",
+      "kind": "suburb",
+      "point": [
+        16124.83,
+        10936.18
+      ],
+      "aliases": []
+    },
+    {
+      "id": "2154411635",
+      "name": "Balaclava",
+      "kind": "suburb",
+      "point": [
+        13874.07,
+        12486.56
+      ],
+      "aliases": []
+    },
+    {
+      "id": "2597778692",
+      "name": "Beacon Cove",
+      "kind": "neighbourhood",
+      "point": [
+        8210.73,
+        9274.66
+      ],
+      "aliases": []
+    },
+    {
+      "id": "2578683688",
+      "name": "Braybrook",
+      "kind": "suburb",
+      "point": [
+        1354.85,
+        3484.83
+      ],
+      "aliases": []
+    },
+    {
+      "id": "2142270771",
+      "name": "Burnley",
+      "kind": "suburb",
+      "point": [
+        15782.74,
+        7929.51
+      ],
+      "aliases": []
+    },
+    {
+      "id": "2142277290",
+      "name": "Carlton",
+      "kind": "suburb",
+      "point": [
+        11391.25,
+        4783.24
+      ],
+      "aliases": []
+    },
+    {
+      "id": "222783175",
+      "name": "Carlton North",
+      "kind": "suburb",
+      "point": [
+        11742.33,
+        3014.39
+      ],
+      "aliases": []
+    },
+    {
+      "id": "2089501541",
+      "name": "Clifton Hill",
+      "kind": "suburb",
+      "point": [
+        13929.97,
+        3620.02
+      ],
+      "aliases": []
+    },
+    {
+      "id": "2089501763",
+      "name": "Collingwood",
+      "kind": "suburb",
+      "point": [
+        13130.21,
+        4932.26
+      ],
+      "aliases": []
+    },
+    {
+      "id": "2089502450",
+      "name": "Cremorne",
+      "kind": "suburb",
+      "point": [
+        13602.48,
+        7910.53
+      ],
+      "aliases": []
+    },
+    {
+      "id": "2087140700",
+      "name": "Docklands",
+      "kind": "suburb",
+      "point": [
+        8884.84,
+        6738.73
+      ],
+      "aliases": []
+    },
+    {
+      "id": "11393500318",
+      "name": "East End Theatre District",
+      "kind": "neighbourhood",
+      "point": [
+        11606.64,
+        6071.6
+      ],
+      "aliases": []
+    },
+    {
+      "id": "2089502211",
+      "name": "East Melbourne",
+      "kind": "suburb",
+      "point": [
+        12956.66,
+        6089.91
+      ],
+      "aliases": []
+    },
+    {
+      "id": "2596105026",
+      "name": "Elwood",
+      "kind": "suburb",
+      "point": [
+        13085.95,
+        13454.14
+      ],
+      "aliases": []
+    },
+    {
+      "id": "2089497945",
+      "name": "Fairfield",
+      "kind": "suburb",
+      "point": [
+        15525.9,
+        2927.07
+      ],
+      "aliases": []
+    },
+    {
+      "id": "1060131016",
+      "name": "Fishermans Bend",
+      "kind": "neighbourhood",
+      "point": [
+        7444.48,
+        7550.24
+      ],
+      "aliases": []
+    },
+    {
+      "id": "2089501965",
+      "name": "Fitzroy",
+      "kind": "suburb",
+      "point": [
+        12346.01,
+        4830.86
+      ],
+      "aliases": []
+    },
+    {
+      "id": "246581746",
+      "name": "Fitzroy North",
+      "kind": "suburb",
+      "point": [
+        12695.11,
+        2857.58
+      ],
+      "aliases": []
+    },
+    {
+      "id": "2141206461",
+      "name": "Flemington",
+      "kind": "suburb",
+      "point": [
+        7037.15,
+        3362.05
+      ],
+      "aliases": []
+    },
+    {
+      "id": "2142287856",
+      "name": "Footscray",
+      "kind": "suburb",
+      "point": [
+        5126.19,
+        4667.72
+      ],
+      "aliases": []
+    },
+    {
+      "id": "2597778636",
+      "name": "Garden City",
+      "kind": "neighbourhood",
+      "point": [
+        7217.61,
+        8990.42
+      ],
+      "aliases": []
+    },
+    {
+      "id": "4405133314",
+      "name": "Greek Precinct",
+      "kind": "neighbourhood",
+      "point": [
+        11257.76,
+        5964.06
+      ],
+      "aliases": [
+        "Little Greece"
+      ]
+    },
+    {
+      "id": "2594692430",
+      "name": "Holmesglen",
+      "kind": "neighbourhood",
+      "point": [
+        22398.5,
+        12773.22
+      ],
+      "aliases": []
+    },
+    {
+      "id": "11637186341",
+      "name": "Jolimont",
+      "kind": "neighbourhood",
+      "point": [
+        12834.11,
+        6564.08
+      ],
+      "aliases": []
+    },
+    {
+      "id": "2141206946",
+      "name": "Kensington",
+      "kind": "suburb",
+      "point": [
+        7732.36,
+        4189.99
+      ],
+      "aliases": []
+    },
+    {
+      "id": "2592353793",
+      "name": "Kingsville",
+      "kind": "suburb",
+      "point": [
+        3576.24,
+        5893.85
+      ],
+      "aliases": []
+    },
+    {
+      "id": "2594694452",
+      "name": "Kooyong",
+      "kind": "suburb",
+      "point": [
+        17421.83,
+        9202.72
+      ],
+      "aliases": []
+    },
+    {
+      "id": "13700867711",
+      "name": "Koreatown",
+      "kind": "neighbourhood",
+      "point": [
+        10313.49,
+        6262.65
+      ],
+      "aliases": []
+    },
+    {
+      "id": "2586286193",
+      "name": "Maidstone",
+      "kind": "suburb",
+      "point": [
+        3043.85,
+        2916.21
+      ],
+      "aliases": []
+    },
+    {
+      "id": "2088402468",
+      "name": "Malvern",
+      "kind": "suburb",
+      "point": [
+        17391.63,
+        11003.43
+      ],
+      "aliases": []
+    },
+    {
+      "id": "2594688910",
+      "name": "Malvern East",
+      "kind": "suburb",
+      "point": [
+        20146.26,
+        13080.25
+      ],
+      "aliases": []
+    },
+    {
+      "id": "1105717735",
+      "name": "Maribyrnong",
+      "kind": "suburb",
+      "point": [
+        4425.8,
+        1506.07
+      ],
+      "aliases": []
+    },
+    {
+      "id": "21579127",
+      "name": "Melbourne",
+      "kind": "city",
+      "point": [
+        10961.46,
+        6327.16
+      ],
+      "aliases": []
+    },
+    {
+      "id": "8625381904",
+      "name": "Melbourne",
+      "kind": "suburb",
+      "point": [
+        11171.54,
+        6314.27
+      ],
+      "aliases": []
+    },
+    {
+      "id": "2272227482",
+      "name": "Middle Park",
+      "kind": "suburb",
+      "point": [
+        10951.08,
+        10424.63
+      ],
+      "aliases": []
+    },
+    {
+      "id": "2207978609",
+      "name": "North Melbourne",
+      "kind": "suburb",
+      "point": [
+        9338.71,
+        4622.94
+      ],
+      "aliases": []
+    },
+    {
+      "id": "2141203083",
+      "name": "Parkville",
+      "kind": "suburb",
+      "point": [
+        9872.53,
+        3338.95
+      ],
+      "aliases": []
+    },
+    {
+      "id": "2090532856",
+      "name": "Port Melbourne",
+      "kind": "suburb",
+      "point": [
+        7377.06,
+        8528.38
+      ],
+      "aliases": []
+    },
+    {
+      "id": "2154412351",
+      "name": "Prahran",
+      "kind": "suburb",
+      "point": [
+        14345.66,
+        10435.85
+      ],
+      "aliases": []
+    },
+    {
+      "id": "2142273216",
+      "name": "Princes Hill",
+      "kind": "suburb",
+      "point": [
+        11181.93,
+        2720.78
+      ],
+      "aliases": []
+    },
+    {
+      "id": "2089502391",
+      "name": "Richmond",
+      "kind": "suburb",
+      "point": [
+        14439.32,
+        6933.78
+      ],
+      "aliases": []
+    },
+    {
+      "id": "2154389626",
+      "name": "Ripponlea",
+      "kind": "suburb",
+      "point": [
+        13939.15,
+        13318.19
+      ],
+      "aliases": []
+    },
+    {
+      "id": "2592353794",
+      "name": "Seddon",
+      "kind": "suburb",
+      "point": [
+        4641.67,
+        5637.72
+      ],
+      "aliases": []
+    },
+    {
+      "id": "2272228006",
+      "name": "South Melbourne",
+      "kind": "suburb",
+      "point": [
+        10469.3,
+        8468.88
+      ],
+      "aliases": []
+    },
+    {
+      "id": "2090531063",
+      "name": "South Wharf",
+      "kind": "suburb",
+      "point": [
+        9770.97,
+        7583.58
+      ],
+      "aliases": []
+    },
+    {
+      "id": "2274624295",
+      "name": "South Yarra",
+      "kind": "suburb",
+      "point": [
+        13542.4,
+        8882.87
+      ],
+      "aliases": []
+    },
+    {
+      "id": "2090529953",
+      "name": "Southbank",
+      "kind": "suburb",
+      "point": [
+        11062.92,
+        7559.08
+      ],
+      "aliases": []
+    },
+    {
+      "id": "2088403020",
+      "name": "St Kilda",
+      "kind": "suburb",
+      "point": [
+        12705.81,
+        11793.66
+      ],
+      "aliases": []
+    },
+    {
+      "id": "2272227680",
+      "name": "St Kilda West",
+      "kind": "suburb",
+      "point": [
+        11777.55,
+        11166.52
+      ],
+      "aliases": []
+    },
+    {
+      "id": "2274622295",
+      "name": "Toorak",
+      "kind": "suburb",
+      "point": [
+        15819.12,
+        9261.03
+      ],
+      "aliases": []
+    },
+    {
+      "id": "2578679373",
+      "name": "Tottenham",
+      "kind": "suburb",
+      "point": [
+        1232.54,
+        5485.01
+      ],
+      "aliases": []
+    },
+    {
+      "id": "2142288777",
+      "name": "West Footscray",
+      "kind": "suburb",
+      "point": [
+        2819.69,
+        4989.12
+      ],
+      "aliases": []
+    },
+    {
+      "id": "9273798933",
+      "name": "West Melbourne",
+      "kind": "suburb",
+      "point": [
+        7483.6,
+        5793.29
+      ],
+      "aliases": []
+    },
+    {
+      "id": "2154412285",
+      "name": "Windsor",
+      "kind": "suburb",
+      "point": [
+        13609.91,
+        10741.32
+      ],
+      "aliases": []
+    },
+    {
+      "id": "2592353803",
+      "name": "Yarraville",
+      "kind": "suburb",
+      "point": [
+        3819.64,
+        6903.41
+      ],
+      "aliases": []
+    },
+    {
+      "id": "5704950546",
+      "name": "Yarra\u2019s Edge",
+      "kind": "neighbourhood",
+      "point": [
+        9559.62,
+        7521.19
+      ],
+      "aliases": []
+    }
+  ]
+}
