@@ -31,4 +31,4 @@ dialog{color:var(--paper);background:#101c2a;border:1px solid #3e5064;border-rad
 .rank-copy p{font-size:.98cqw;line-height:1.18}
 
 .video-placeholder{pointer-events:auto;overflow:visible;inset:5% 6%}.video-placeholder h2{font-size:2.4cqw;margin:0 0 1%}.video-player{height:84%;background:#000}.video-player video{display:block;width:100%;height:100%;object-fit:contain;background:#000}.video-placeholder button{margin-top:.7cqw;background:#e8d69c;color:#132033;border:0;border-radius:5px;padding:.55cqw 1cqw;font-size:1.1cqw;cursor:pointer}
-#presentation:fullscreen.video-mode #stage{width:100vw;height:100dvh;aspect-ratio:auto}#presentation:fullscreen.video-mode .video-placeholder{inset:0;transform:none!important;opacity:1!important;mask:none}#presentation:fullscreen.video-mode .video-player{height:100%}#presentation:fullscreen.video-mode .video-placeholder h2,#presentation:fullscreen.video-mode #playVideoFullscreen{display:none}
+#demoVideo:fullscreen{width:100vw;height:100dvh;object-fit:contain;background:#000}
