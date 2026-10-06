@@ -25,3 +25,9 @@ Assumes flat terrain, vertical extruded footprints and one scene-centre solar di
 Checks include an analytic rectangular-building shadow area and direction test; partition conservation and neighbour/total-shade bounds for every candidate and radius; and sampled 2.5 m versus 1.25 m temperature integration comparisons. Dataset metadata records checks and the unchanged candidate-data SHA256. The original H model file is untouched.
 
 References: [USGS Landsat surface temperature](https://www.usgs.gov/landsat-missions/landsat-collection-2-surface-temperature); [University of Idaho Integrated Design Lab shadow simulator](https://idlboise.com/sites/default/files/design-tools/CODEX/sundial-simulator.html).
+
+
+## Building names and spacing
+Building names are an incomplete, geometry-matched OpenStreetMap lookup, not an authoritative name register. Ten candidate footprints were unambiguously matched in the central-city lookup area. Victoria One (Vone), Light House and Swanston Central have developer/resident website address references. IDs remain the stable identifiers. Source links are in building-names.json; OpenStreetMap contributors, ODbL.
+
+Building spacing uses EPSG:7855 minimum horizontal footprint-edge distance against all 122,414 context footprints. Counts cover 50/100/150 m; the nearest eight are retained, with the nearest five shown. Near-zero gaps may represent shared podiums, touching or overlapping source geometry. These are mapped footprint gaps, not verified tower/facade clearances. Shadow casting already uses the relative building positions and height/sun direction. No distance-to-temperature or heat-transfer coefficient has been introduced. Original H inputs and rankings remain unchanged.
