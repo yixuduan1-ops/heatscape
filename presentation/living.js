@@ -6,15 +6,37 @@ window.HEATSCAPE_LIVING=(slide,index)=>{
  function ring(x,y,r,color,delay=0){return `<circle cx="${x}" cy="${y}" r="${r}" fill="none" stroke="${color}" stroke-width="1.3"><animate attributeName="r" values="${r};${r*2.3}" dur="5s" begin="-${delay}s" repeatCount="indefinite"/><animate attributeName="opacity" values=".35;0" dur="5s" begin="-${delay}s" repeatCount="indefinite"/></circle>`;}
 
  function panel(html,box,after,extra=''){const el=document.createElement('div');el.className='copy-panel '+extra;el.dataset.after=after;const[x,y,w,h]=box;el.style.cssText=`left:${x/1376*100}%;top:${y/768*100}%;width:${w/1376*100}%;height:${h/768*100}%`;el.innerHTML=html;board.append(el);}
+
+ function replaceText(html,box,after,cls){
+  // Text-only masks preserve the original illustrations and their reveal animation.
+  const [x,y,w,h]=box;
+  const cuts=board._textCuts||=[];cuts.push(box);
+  const mask=`<svg xmlns="${NS}" width="1376" height="768"><defs><mask id="text"><rect width="1376" height="768" fill="white"/>${cuts.map(([a,b,c,d])=>`<rect x="${a}" y="${b}" width="${c}" height="${d}" fill="black"/>`).join('')}</mask></defs><rect width="1376" height="768" fill="white" mask="url(#text)"/></svg>`;
+  board.querySelectorAll('.piece>img,.final-scene').forEach(img=>{img.style.maskImage=`url("data:image/svg+xml,${encodeURIComponent(mask)}")`;img.style.maskSize='100% 100%';});
+  const host=[...board.querySelectorAll('.piece')].find(el=>{const left=parseFloat(el.style.left)*1376/100,top=parseFloat(el.style.top)*768/100,width=parseFloat(el.style.width)*1376/100,height=parseFloat(el.style.height)*768/100;return Number(el.dataset.step)===after&&x>=left-.1&&y>=top-.1&&x+w<=left+width+.1&&y+h<=top+height+.1});
+  const el=document.createElement('div');el.className='revised-copy '+cls;el.innerHTML=html;
+  if(host){const a=parseFloat(host.style.left)*1376/100,b=parseFloat(host.style.top)*768/100,c=parseFloat(host.style.width)*1376/100,d=parseFloat(host.style.height)*768/100;el.style.cssText=`left:${(x-a)/c*100}%;top:${(y-b)/d*100}%;width:${w/c*100}%;height:${h/d*100}%`;host.append(el);host.setAttribute('aria-label',el.textContent);}else{el.dataset.after=after;el.classList.add('standalone-copy');el.style.cssText=`left:${x/1376*100}%;top:${y/768*100}%;width:${w/1376*100}%;height:${h/768*100}%`;board.append(el);}
+ }
+ if(index===2){
+  replaceText('<strong>Data import</strong><p>Python / GIS<br>Clean · align<br>Spatial join</p>',[286,339,140,97],2,'pipeline-copy');
+  replaceText('<strong>H · I · B</strong><p>Heat · Income<br>Building scale</p>',[491,337,138,98],4,'pipeline-copy');
+  replaceText('<strong>Relative scores</strong><p>Convert H / I / B into<br>0–100 percentiles</p>',[715,505,160,92],4,'pipeline-copy');
+ }
+ if(index===4){
+  replaceText('Moving from single-point sampling to sun-aware heat assessment.',[43,46,1290,59],1,'evolution-heading');
+  replaceText('<ul><li>Heat sampling considers <em>building shadows,<br>sun altitude and building location.</em></li><li>Satellite resolution still limits detail.</li><li><em>Adjustable weights</em> support<br>different policy goals.</li></ul>',[772,519,521,171],3,'evolution-copy');
+ }
+ if(index===6)replaceText('Next steps: More temperature data to refine models · Field visits · User trials &amp; feedback',[185,705,1132,43],4,'next-copy');
+
  if(index===3)panel('<strong>The Decision Need</strong><p>HEATSCAPE proposes a unified view to prioritise further investigation.</p>',[1077,282,257,208],5,'decision-copy');
- if(index===2)panel('<span>Step 4:</span><strong>Policy to Rank</strong><p>Apply policy weights to generate a ranked building shortlist.</p>',[923,327,161,127],5,'rank-copy');
+ if(index===2)panel('<strong>Results interface</strong><p>3D map · evidence panels<br>Ranking · CSV shortlist</p>',[923,327,161,127],5,'rank-copy');
  if(index===7){const d=document.createElement('div');d.className='ai-declaration';d.innerHTML='<strong>AI use declaration</strong><p>AI tools assisted with presentation layout and visual refinement.<br>The conceptual logic and design rationale were developed by Yixuan (Yoko) Duan.</p>';board.append(d);}
 
  if(index===0){const credit=document.createElement('div');credit.className='cover-credit';credit.innerHTML='<strong>Yixuan (Yoko) Duan</strong><span>Digital Infrastructure System Capstone</span>';board.append(credit);}
  if(index===0||index===7){let svg=ring(1030,380,68,'#dec98e')+ring(1030,380,68,'#dec98e',2.5);for(let i=0;i<8;i++)svg+=traveller(`M ${845+i*24} 640 Q ${1120-i*22} 480 ${1050+i*16} 195`,i%2?'#8eccc8':'#ddc580',8+i*.3,i*.9,1.9);effect(svg);}
  if(index===1){effect(`<ellipse cx="369" cy="345" rx="72" ry="172" fill="#efc263" class="window-breath"/>`,2);effect(traveller('M 143 664 Q 88 402 148 127','#edce7f',8,2,1.8),2);}
  if(index===2){
- const tags=[['Sensing','',35,230,205,1],['Transport','',272,230,205,2],['Processing','',483,230,205,4],['Storage','GeoTIFF / GeoPackage / browser assets',43,582,393,3],['Interface','',1110,230,205,5],['Governance','Licences · assumptions · human review',43,663,393,6],['Sustainability','Reusable workflow · manual data refresh',465,663,470,7]];
+ const tags=[['Sensing','Landsat LST · ABS SA1 income<br>Building data',35,230,205,1],['Transport','',272,230,205,2],['Processing','',483,230,205,4],['Storage','Original spatial files · processed building results',43,582,393,3],['Interface','',1110,230,205,5],['Governance','Visible assumptions &amp; limits<br>SA1 income = neighbourhood context',43,663,393,6],['Sustainability','Reusable scripts · reproducible processing<br>Data updates remain manual',465,663,470,7]];
  tags.forEach(([title,body,x,y,w,after])=>{const el=document.createElement('div');el.className='pipeline-tag';el.dataset.after=after;el.style.cssText=`left:${x/1376*100}%;top:${y/768*100}%;width:${w/1376*100}%`;el.innerHTML=`<strong>${title}</strong>${body?`<span>${body}</span>`:""}`;board.append(el);});
  effect(traveller('M 233 385 L 670 385','#e6cc8d',5,0)+traveller('M 880 385 L 1125 385','#bba8df',4,1),4);
  }
