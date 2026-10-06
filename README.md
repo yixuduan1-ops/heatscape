@@ -12,4 +12,6 @@ Scores combine H/I/B percentile indicators using a common policy balance. They a
 
 ## Building shade context
 
-Priorities includes an optional ground-shadow overlay at the Landsat scene-centre time: 7 January 2026 00:03:46.5320309 UTC (11:03:46 AEDT). MTL sun elevation 56.65410279 degrees; azimuth 73.04185990 degrees. The original H/I/B model and data are unchanged. See [shadow method](shadow-method.md).
+Priorities includes an optional ground-shadow overlay at the Landsat scene-centre time: 7 January 2026 00:03:46.5320309 UTC (11:03:46 AEDT). MTL sun elevation 56.65410279 degrees; azimuth 73.04185990 degrees. The default sun-exposed H model removes building footprints and modelled ground shadows from the heat sampling area and recomputes H and ranks. A calculation switch restores original sampling; a separate checkbox controls the shadow overlay. Original candidate inputs are preserved. I/B references and weights are unchanged. See [shadow method](shadow-method.md).
+
+Full implemented equations and data-derived curves: [model.html](model.html). Temperature differences are changes of spatial LST statistic, not predicted cooling.
