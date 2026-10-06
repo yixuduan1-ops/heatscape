@@ -57,7 +57,7 @@ document.addEventListener('fullscreenchange',()=>{const videoActive=document.ful
 
 $('previous').addEventListener('click',previous);$('next').addEventListener('click',next);$('playSequence').addEventListener('click',play);$('replaySlide').addEventListener('click',restart);$('fullscreenButton').addEventListener('click',fullscreen);$('animationButton').addEventListener('click',toggleAnimation);$('overviewButton').addEventListener('click',()=>openDialog('overview'));$('helpButton').addEventListener('click',()=>openDialog('help'));
 // A slide click reveals content, while toolbar buttons never bubble into the stage.
-stage.addEventListener('click',e=>{if(e.target.closest('.video-placeholder'))return;if(ignoreClick){ignoreClick=false;return;}next();});
+stage.addEventListener('click',e=>{if(e.target.closest('.video-placeholder, a'))return;if(ignoreClick){ignoreClick=false;return;}next();});
 document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>{show(+b.dataset.go);if($('overview').open)closeDialog('overview');}));
 document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',()=>closeDialog(b.dataset.close)));
 document.querySelectorAll('dialog').forEach(d=>{d.addEventListener('click',e=>{if(e.target===d){const r=d.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)closeDialog(d.id);}});d.addEventListener('close',wake);});
