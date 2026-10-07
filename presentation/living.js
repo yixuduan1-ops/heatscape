@@ -32,7 +32,7 @@ window.HEATSCAPE_LIVING=(slide,index)=>{
  if(index===2)panel('<strong>Results interface</strong><p>3D map · evidence panels<br>Ranking · CSV shortlist</p>',[923,327,161,127],5,'rank-copy');
  if(index===7){const d=document.createElement('div');d.className='ai-declaration';d.innerHTML='<strong>AI use declaration</strong><p>AI tools assisted with presentation layout and visual refinement.<br>The conceptual logic and design rationale were developed by Yixuan (Yoko) Duan.</p>';board.append(d);}
 
- if(index===0){const credit=document.createElement('div');credit.className='cover-credit';credit.innerHTML='<strong>Yixuan (Yoko) Duan</strong><span>Digital Infrastructure System Capstone</span>';board.append(credit);}
+ if(index===0){const credit=document.createElement('div');credit.className='cover-credit';credit.innerHTML='<strong>Yixuan (Yoko) Duan</strong><span>Student ID: 1559056</span><span>Digital Infrastructure System Capstone</span>';board.append(credit);}
  if(index===0||index===7){let svg=ring(1030,380,68,'#dec98e')+ring(1030,380,68,'#dec98e',2.5);for(let i=0;i<8;i++)svg+=traveller(`M ${845+i*24} 640 Q ${1120-i*22} 480 ${1050+i*16} 195`,i%2?'#8eccc8':'#ddc580',8+i*.3,i*.9,1.9);effect(svg);}
  if(index===1){effect(`<ellipse cx="369" cy="345" rx="72" ry="172" fill="#efc263" class="window-breath"/>`,2);effect(traveller('M 143 664 Q 88 402 148 127','#edce7f',8,2,1.8),2);}
  if(index===2){
