@@ -1,6 +1,6 @@
 # Ranking stability in Priorities
 
-Open Priorities to see weights, a building stability list and a test matrix together. The desktop panel is wider; smaller screens stack the sections. The building list has no pagination. Search by building name, alias, address or ID. List and map council filters do not recalculate ranks.
+Open Priorities to see weights beside a building stability list. The compact desktop panel leaves the map visible; the test matrix sits below the weights. Smaller screens stack the sections. The building list has no pagination. Search by building name, alias, address or ID. List and map council filters do not recalculate ranks.
 
 ## Tests
 
@@ -39,3 +39,5 @@ The “Only buildings in all tested settings” checkbox is shared with Shortlis
 “Export list” exports the matching stability rows, counts, range, current score/rank, test IDs, cohort, shortlist settings and height quality. “Export test table” exports exact weights, model, radius, cutoff, cohort, shortlist count and selected-building results. The existing Shortlist export also includes stability fields.
 
 Pixel support is available beneath the test matrix for a selected building: sunlit sample counts, valid area and sunlit area at each radius. Counts are resampled 30 m raster cells, not independent observations at the sensor's approximately 100 m thermal resolution. This diagnostic does not establish that a 50 m extent resolves local temperature adequately.
+
+The **Show consistent Top on map** button isolates buildings selected in every valid test, closes the panel and fits the map to them. It retains the selected council, clears the separate current-top filter, and hides other-building context. The map banner reports the visible count and test count; **Clear filter** restores the other candidates within the council filter. This means every tested setting, not every possible setting. While Priorities is open, selected buildings are centred in the uncovered part of the map.

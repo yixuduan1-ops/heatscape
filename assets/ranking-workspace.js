@@ -9,7 +9,7 @@
   const blob=new Blob(['\ufeff'+[fields.join(','),...rows.map(r=>fields.map(k=>cell(r[k])).join(','))].join('\r\n')],{type:'text/csv;charset=utf-8'});
   const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
  }
- function create({all,reference,onSettings,onSelect,onFilter,onMap,onViewMap,available}){
+ function create({all,reference,onSettings,onSelect,onFilter,onMap,onViewMap,onStableMap,available}){
   let suite=null,key='',state={},selected=null;
   const byId=new Map(all.map(r=>[r.building_id,r]));
   const stable=()=>$('stabilityOnly').checked;
@@ -57,6 +57,9 @@
    if(!suite)return;
    $('stabilitySummary').innerHTML=Object.entries(suite.counts).map(([status,count])=>`<span><i style="background:${colors[status]}"></i><b>${number(count)}</b> ${labels[status]}</span>`).join('');
    $('stabilityTestCount').textContent=`${suite.tests.length} tests`;
+   const consistent=all.filter(r=>r.rankStability.status==='all'&&(!$('council').value||r.lga_name===$('council').value)).length;
+   $('stableMapActionCount').textContent=`${number(consistent)} buildings · in all ${suite.tests.length} tested settings`;
+   $('showStableOnMap').disabled=consistent===0;
    $('stabilityScope').textContent=`Same ${number(suite.cohort)} buildings in every test · ${state.topMode==='count'?'Top '+state.topValue:'Top '+state.topValue+'%'} = ${number(suite.requested)} positions; cutoff ties included.`;
    $('stabilityExclusions').textContent=suite.counts.insufficient?`${number(suite.counts.insufficient)} candidates excluded: incomplete evidence. Missing data does not mean “not shortlisted”.`:'Every candidate has data for the full test set.';
    $('stabilityScopeFilter').textContent=$('council').value?`List and map filtered to ${$('council').value.toLowerCase()}; test ranks remain across all five councils.`:'Test ranks use all five councils; list filters do not recalculate them.';
@@ -83,6 +86,14 @@
   $('stabilityRows').onclick=e=>{const b=e.target.closest('[data-stability-id]');if(b)onSelect(b.dataset.stabilityId);};
   $('stabilityTests').onclick=e=>{const b=e.target.closest('[data-apply-test]');if(!b)return;const t=suite.tests[Number(b.dataset.applyTest)];onSettings({radius:t.radius,heatMode:t.heatMode,balance:t.balance,building:t.building});};
   $('stabilityMap').onchange=()=>onMap($('stabilityMap').checked);$('stabilityViewMap').onclick=onViewMap;
+  $('showStableOnMap').onclick=()=>{
+   $('stabilityOnly').checked=true;$('stableOnly').checked=true;$('stabilityMap').checked=true;
+   $('stabilitySearch').value='';onMap(true);onStableMap();render();
+  };
+  $('clearStableMap').onclick=()=>{
+   $('stabilityOnly').checked=false;$('stableOnly').checked=false;onFilter();render();
+   document.querySelector('[data-panel="priority"]').focus();
+  };
   function setSize(){const topMode=$('priorityShortlistMode').value,max=topMode==='count'?all.length:100,topValue=Math.max(1,Math.min(max,Math.round(Number($('priorityShortlistValue').value)||1)));onSettings({topMode,topValue});}
   $('priorityShortlistMode').onchange=()=>{$('priorityShortlistValue').value=$('priorityShortlistMode').value==='count'?100:20;setSize();};$('priorityShortlistValue').onchange=setSize;
   $('exportStability').onclick=()=>{
