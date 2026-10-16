@@ -1,21 +1,15 @@
 # HEATSCAPE
 
-Building-level evidence for targeted energy support in five inner Melbourne councils. Independent student research; not an official VEU service or an automatic funding decision.
+Independent student research for targeted energy-support investigation across five inner Melbourne councils. Not an official VEU service or an automatic funding decision.
 
-Open the published GitHub Pages site. The application and instructions use relative paths and run as a static site. Set Pages to deploy from the main branch, root directory.
+The static application is deployed at https://yixuduan1-ops.github.io/heatscape/index.html from the main branch root. It includes 2,573 apartment candidates; the default observation remains 7 January 2026, at 100 m and H/I/B 40/40/20.
 
-## Data and interpretation
+## Heat evidence
 
-2,573 apartment candidates; 2,571 scored in the default study sample. Temperature: Landsat 9, 7 January 2026. Income: ABS Census 2021 SA1. Buildings: Overture and City of Melbourne project records. Context: OpenStreetMap contributors, ODbL; snapshot 12 September 2026. Methods and limitations are available in the application under Set priorities > Method & interpretation.
+Nine Landsat 8/9 dates (29 Dec 2025–23 Feb 2026) are cloud/quality screened and processed with their own solar geometry. The selector also offers a median requiring at least three valid dates, and the CSIRO 2018–19 historical LST product. Historical CSIRO UHI, Victorian 2018 Mesh Block heat/vegetation and Climate Victoria 1981–2010 monthly air-temperature normals are additional building context, not extra scoring weights. All sources, checksums, periods, coverage and limitations are in About data and assets/heat-source-register.json.
 
-Scores combine H/I/B percentile indicators using a common policy balance. They are not health-risk, occupant-income, savings or funding eligibility predictions.
+## Calculation and stability
 
-## Building shade context
+H/I/B relative percentiles use shared weights. Eighteen tests combine six weight choices and three extents for the selected source. The nine-date suite contains 162 tests; custom weights add another set. Test ranks use a shared complete-evidence cohort; missing evidence is never zero need. The stability list, map isolation, test matrix and CSV exports stay linked.
 
-Priorities includes an optional ground-shadow overlay at the Landsat scene-centre time: 7 January 2026 00:03:46.5320309 UTC (11:03:46 AEDT). MTL sun elevation 56.65410279 degrees; azimuth 73.04185990 degrees. The default sun-exposed H model removes building footprints and modelled ground shadows from the heat sampling area and recomputes H and ranks. A calculation switch restores original sampling; a separate checkbox controls the shadow overlay. Original candidate inputs are preserved. I/B references and weights are unchanged. See [shadow method](shadow-method.md).
-
-Full implemented equations and data-derived curves: [model.html](model.html). Temperature differences are changes of spatial LST statistic, not predicted cooling.
-
-## Ranking stability
-
-Priorities shows weights beside a searchable stability list in a compact desktop panel, leaving the map visible. The test matrix sits below the weights. Eighteen radius/weight tests expand to 36 when both heat models are enabled; custom weights are added automatically. A shared scoring cohort and shortlist size keep comparisons consistent. Buildings with incomplete evidence are flagged separately. “Show consistent Top on map” isolates the stable buildings, closes the panel and fits the map; a banner lets users clear this filter. Stable-only filtering, map colours, pixel diagnostics and CSV exports are included. See [ranking stability method and controls](ranking-stability.md).
+See [model equations](model.html), [user guide](instructions.html), [ranking stability](ranking-stability.md) and [building validation](building-validation.html). Original read-only input files and reproducible processing scripts are retained locally; only compact derived results and geometry are served to the browser.

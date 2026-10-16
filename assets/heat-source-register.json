@@ -1,0 +1,1602 @@
+{
+  "version": "heat-multidate-v1",
+  "processed": "16 October 2026",
+  "default": "landsat-20260107",
+  "datasets": [
+    {
+      "id": "landsat-20251229",
+      "date": "2025-12-29",
+      "label": "29 Dec 2025 · Landsat 9",
+      "source": "USGS Landsat Collection 2 Level-2 surface temperature",
+      "scene": "LC09_L2SP_093086_20251229_20251230_02_T1",
+      "utc": "2025-12-29T00:10:03.3769820Z",
+      "local_time": "29 Dec 2025 · 11:10:03 AEDT",
+      "sun_elevation": 57.9130569,
+      "sun_azimuth": 73.30023619,
+      "scene_cloud_pct": 3.92,
+      "unit": "°C",
+      "grid_m": 30,
+      "native_thermal_m": 100,
+      "scale": 0.00341802,
+      "offset_kelvin": 149.0,
+      "method": "Sun-exposed open ground; 2.5 m quadrature; area × exp(-2(d/R)^2); 80% valid area and weight; >=3 valid resampled cells",
+      "uncertainty": "ST_QA × 0.01 K; reported, not a further cutoff",
+      "qa_excluded_bits": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "qa_not_supplied": [
+        "QA_RADSAT",
+        "ST_CDIST"
+      ],
+      "source_url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-surface-temperature",
+      "license": "USGS public domain",
+      "shapes_file": "heat/20251229-shapes.bin",
+      "shadows_file": "heat/20251229-shadows.bin",
+      "context_buildings": 122414,
+      "quadrature_max_difference_C": 0.004,
+      "assumptions": "Scene-centre sun; flat ground; vertical extrusions; estimated heights; no trees or terrain; buildings beyond study boundary may be missing; contemporary buildings applied to historical observations. Area equivalents are not independent measurements.",
+      "coverage": {
+        "50": {
+          "MARIBYRNONG": {
+            "total": 157,
+            "valid_heat": 58
+          },
+          "MELBOURNE": {
+            "total": 510,
+            "valid_heat": 190
+          },
+          "PORT PHILLIP": {
+            "total": 1377,
+            "valid_heat": 850
+          },
+          "STONNINGTON": {
+            "total": 198,
+            "valid_heat": 166
+          },
+          "YARRA": {
+            "total": 331,
+            "valid_heat": 253
+          }
+        },
+        "100": {
+          "MARIBYRNONG": {
+            "total": 157,
+            "valid_heat": 54
+          },
+          "MELBOURNE": {
+            "total": 510,
+            "valid_heat": 175
+          },
+          "PORT PHILLIP": {
+            "total": 1377,
+            "valid_heat": 843
+          },
+          "STONNINGTON": {
+            "total": 198,
+            "valid_heat": 165
+          },
+          "YARRA": {
+            "total": 331,
+            "valid_heat": 247
+          }
+        },
+        "150": {
+          "MARIBYRNONG": {
+            "total": 157,
+            "valid_heat": 52
+          },
+          "MELBOURNE": {
+            "total": 510,
+            "valid_heat": 164
+          },
+          "PORT PHILLIP": {
+            "total": 1377,
+            "valid_heat": 839
+          },
+          "STONNINGTON": {
+            "total": 198,
+            "valid_heat": 165
+          },
+          "YARRA": {
+            "total": 331,
+            "valid_heat": 242
+          }
+        }
+      },
+      "files": [
+        {
+          "name": "LC09_L2SP_093086_20251229_20251230_02_T1_MTL.txt",
+          "bytes": 15296,
+          "sha256": "3ee8dc30f8a5b69c6f64366ee55f9f34f5549c728ba22b3e8a07b3a1bc2f483d"
+        },
+        {
+          "name": "LC09_L2SP_093086_20251229_20251230_02_T1_ST_B10.TIF",
+          "bytes": 89173576,
+          "sha256": "79591be71d7f48d61f5e33442b7a03ebbddc502ae32f46a6a7bae710745f5177"
+        },
+        {
+          "name": "LC09_L2SP_093086_20251229_20251230_02_T1_QA_PIXEL.TIF",
+          "bytes": 1209252,
+          "sha256": "d97ed3a66a47fe2d54b7f9af82ef86a617d4d7e03533a8dde0e8ee431205f5cf"
+        },
+        {
+          "name": "LC09_L2SP_093086_20251229_20251230_02_T1_ST_QA.TIF",
+          "bytes": 28766227,
+          "sha256": "739d9dd1f5e14f5798728a7c80067e0e4695094ebb720f4076923caa08b5f952"
+        }
+      ],
+      "kind": "observation",
+      "short_label": "29 Dec 2025",
+      "raster_qa_audit": {
+        "analysis_grid_cells": 344980,
+        "positive_temperature_cells": 344980,
+        "qa_rejected_among_positive": 172268,
+        "valid_heat_cells": 172712,
+        "qa_zero_with_valid_temperature": 0,
+        "qa_negative_with_valid_temperature": 0,
+        "bit_counts_among_positive": {
+          "0": 0,
+          "1": 44194,
+          "2": 32629,
+          "3": 70277,
+          "4": 78506,
+          "5": 1
+        }
+      },
+      "small_50m_area_count": 2384,
+      "heat_use": "Selectable H input, with date-specific solar geometry"
+    },
+    {
+      "id": "landsat-20260106",
+      "date": "2026-01-06",
+      "label": "06 Jan 2026 · Landsat 8",
+      "source": "USGS Landsat Collection 2 Level-2 surface temperature",
+      "scene": "LC08_L2SP_093086_20260106_20260114_02_T1",
+      "utc": "2026-01-06T00:09:45.5747850Z",
+      "local_time": "06 Jan 2026 · 11:09:45 AEDT",
+      "sun_elevation": 56.78499981,
+      "sun_azimuth": 73.14647317,
+      "scene_cloud_pct": 0.08,
+      "unit": "°C",
+      "grid_m": 30,
+      "native_thermal_m": 100,
+      "scale": 0.00341802,
+      "offset_kelvin": 149.0,
+      "method": "Sun-exposed open ground; 2.5 m quadrature; area × exp(-2(d/R)^2); 80% valid area and weight; >=3 valid resampled cells",
+      "uncertainty": "ST_QA × 0.01 K; reported, not a further cutoff",
+      "qa_excluded_bits": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "qa_not_supplied": [
+        "QA_RADSAT",
+        "ST_CDIST"
+      ],
+      "source_url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-surface-temperature",
+      "license": "USGS public domain",
+      "shapes_file": "heat/20260106-shapes.bin",
+      "shadows_file": "heat/20260106-shadows.bin",
+      "context_buildings": 122414,
+      "quadrature_max_difference_C": 0.004,
+      "assumptions": "Scene-centre sun; flat ground; vertical extrusions; estimated heights; no trees or terrain; buildings beyond study boundary may be missing; contemporary buildings applied to historical observations. Area equivalents are not independent measurements.",
+      "coverage": {
+        "50": {
+          "MARIBYRNONG": {
+            "total": 157,
+            "valid_heat": 157
+          },
+          "MELBOURNE": {
+            "total": 510,
+            "valid_heat": 432
+          },
+          "PORT PHILLIP": {
+            "total": 1377,
+            "valid_heat": 557
+          },
+          "STONNINGTON": {
+            "total": 198,
+            "valid_heat": 165
+          },
+          "YARRA": {
+            "total": 331,
+            "valid_heat": 330
+          }
+        },
+        "100": {
+          "MARIBYRNONG": {
+            "total": 157,
+            "valid_heat": 157
+          },
+          "MELBOURNE": {
+            "total": 510,
+            "valid_heat": 431
+          },
+          "PORT PHILLIP": {
+            "total": 1377,
+            "valid_heat": 539
+          },
+          "STONNINGTON": {
+            "total": 198,
+            "valid_heat": 169
+          },
+          "YARRA": {
+            "total": 331,
+            "valid_heat": 330
+          }
+        },
+        "150": {
+          "MARIBYRNONG": {
+            "total": 157,
+            "valid_heat": 157
+          },
+          "MELBOURNE": {
+            "total": 510,
+            "valid_heat": 425
+          },
+          "PORT PHILLIP": {
+            "total": 1377,
+            "valid_heat": 463
+          },
+          "STONNINGTON": {
+            "total": 198,
+            "valid_heat": 168
+          },
+          "YARRA": {
+            "total": 331,
+            "valid_heat": 330
+          }
+        }
+      },
+      "files": [
+        {
+          "name": "LC08_L2SP_093086_20260106_20260114_02_T1_MTL.txt",
+          "bytes": 15451,
+          "sha256": "b57e10c08391da5259b318c1078d046225ec26ccd940e23f0a6cac806e215b32"
+        },
+        {
+          "name": "LC08_L2SP_093086_20260106_20260114_02_T1_ST_B10.TIF",
+          "bytes": 88318490,
+          "sha256": "2f362b982da687c375fba91d1fa5bc08ba6e54767b0ef55d189a50e75585ca62"
+        },
+        {
+          "name": "LC08_L2SP_093086_20260106_20260114_02_T1_QA_PIXEL.TIF",
+          "bytes": 636230,
+          "sha256": "f4ac001eb12c44153515db9d931f1e28cd9f92e940945e8a816ccc2945a214c4"
+        },
+        {
+          "name": "LC08_L2SP_093086_20260106_20260114_02_T1_ST_QA.TIF",
+          "bytes": 28420549,
+          "sha256": "f855c63e1367cdf5b313385aa92952610a859d48d7426abfe633c623e1c3006a"
+        }
+      ],
+      "kind": "observation",
+      "short_label": "06 Jan 2026",
+      "raster_qa_audit": {
+        "analysis_grid_cells": 344980,
+        "positive_temperature_cells": 344980,
+        "qa_rejected_among_positive": 23102,
+        "valid_heat_cells": 321878,
+        "qa_zero_with_valid_temperature": 0,
+        "qa_negative_with_valid_temperature": 0,
+        "bit_counts_among_positive": {
+          "0": 0,
+          "1": 10708,
+          "2": 0,
+          "3": 4529,
+          "4": 11749,
+          "5": 0
+        }
+      },
+      "small_50m_area_count": 2393,
+      "heat_use": "Selectable H input, with date-specific solar geometry"
+    },
+    {
+      "id": "landsat-20260107",
+      "date": "2026-01-07",
+      "label": "07 Jan 2026 · Landsat 9",
+      "source": "USGS Landsat Collection 2 Level-2 surface temperature",
+      "scene": "LC09_L2SP_092086_20260107_20260108_02_T1",
+      "utc": "2026-01-07T00:03:46.5320309Z",
+      "local_time": "07 Jan 2026 · 11:03:46 AEDT",
+      "sun_elevation": 56.65410279,
+      "sun_azimuth": 73.0418599,
+      "scene_cloud_pct": 0.0,
+      "unit": "°C",
+      "grid_m": 30,
+      "native_thermal_m": 100,
+      "scale": 0.00341802,
+      "offset_kelvin": 149.0,
+      "method": "Sun-exposed open ground; 2.5 m quadrature; area × exp(-2(d/R)^2); 80% valid area and weight; >=3 valid resampled cells",
+      "uncertainty": "ST_QA × 0.01 K; reported, not a further cutoff",
+      "qa_excluded_bits": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "qa_not_supplied": [
+        "QA_RADSAT",
+        "ST_CDIST"
+      ],
+      "source_url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-surface-temperature",
+      "license": "USGS public domain",
+      "shapes_file": "heat/20260107-shapes.bin",
+      "shadows_file": "heat/20260107-shadows.bin",
+      "context_buildings": 122414,
+      "quadrature_max_difference_C": 0.004,
+      "assumptions": "Scene-centre sun; flat ground; vertical extrusions; estimated heights; no trees or terrain; buildings beyond study boundary may be missing; contemporary buildings applied to historical observations. Area equivalents are not independent measurements.",
+      "coverage": {
+        "50": {
+          "MARIBYRNONG": {
+            "total": 157,
+            "valid_heat": 157
+          },
+          "MELBOURNE": {
+            "total": 510,
+            "valid_heat": 510
+          },
+          "PORT PHILLIP": {
+            "total": 1377,
+            "valid_heat": 1377
+          },
+          "STONNINGTON": {
+            "total": 198,
+            "valid_heat": 198
+          },
+          "YARRA": {
+            "total": 331,
+            "valid_heat": 331
+          }
+        },
+        "100": {
+          "MARIBYRNONG": {
+            "total": 157,
+            "valid_heat": 157
+          },
+          "MELBOURNE": {
+            "total": 510,
+            "valid_heat": 510
+          },
+          "PORT PHILLIP": {
+            "total": 1377,
+            "valid_heat": 1377
+          },
+          "STONNINGTON": {
+            "total": 198,
+            "valid_heat": 198
+          },
+          "YARRA": {
+            "total": 331,
+            "valid_heat": 331
+          }
+        },
+        "150": {
+          "MARIBYRNONG": {
+            "total": 157,
+            "valid_heat": 157
+          },
+          "MELBOURNE": {
+            "total": 510,
+            "valid_heat": 510
+          },
+          "PORT PHILLIP": {
+            "total": 1377,
+            "valid_heat": 1377
+          },
+          "STONNINGTON": {
+            "total": 198,
+            "valid_heat": 198
+          },
+          "YARRA": {
+            "total": 331,
+            "valid_heat": 331
+          }
+        }
+      },
+      "files": [
+        {
+          "name": "LC09_L2SP_092086_20260107_20260108_02_T1_MTL.txt",
+          "bytes": 15297,
+          "sha256": "16966444c826fef32c444fe9e93dd17afc3875427bfcb745d9623c53af41bfab"
+        },
+        {
+          "name": "LC09_L2SP_092086_20260107_20260108_02_T1_ST_B10.TIF",
+          "bytes": 86547310,
+          "sha256": "95a5b3466cd784524d290420ad79cbcca86d383533d359509327f72daf8cfd51"
+        },
+        {
+          "name": "LC09_L2SP_092086_20260107_20260108_02_T1_QA_PIXEL.TIF",
+          "bytes": 490810,
+          "sha256": "eec7eeef74284ab6306df2e26ae31244b4349552b7c9b6fff67386304006d2a9"
+        },
+        {
+          "name": "LC09_L2SP_092086_20260107_20260108_02_T1_ST_QA.TIF",
+          "bytes": 24251211,
+          "sha256": "4a864f10f82a3158cd371c30c1be908626085df5b71b04d6d918ca2d72354fbf"
+        }
+      ],
+      "kind": "observation",
+      "short_label": "07 Jan 2026",
+      "raster_qa_audit": {
+        "analysis_grid_cells": 344980,
+        "positive_temperature_cells": 344980,
+        "qa_rejected_among_positive": 70,
+        "valid_heat_cells": 344910,
+        "qa_zero_with_valid_temperature": 0,
+        "qa_negative_with_valid_temperature": 0,
+        "bit_counts_among_positive": {
+          "0": 0,
+          "1": 0,
+          "2": 0,
+          "3": 70,
+          "4": 0,
+          "5": 0
+        }
+      },
+      "small_50m_area_count": 2397,
+      "heat_use": "Selectable H input, with date-specific solar geometry"
+    },
+    {
+      "id": "landsat-20260123",
+      "date": "2026-01-23",
+      "label": "23 Jan 2026 · Landsat 9",
+      "source": "USGS Landsat Collection 2 Level-2 surface temperature",
+      "scene": "LC09_L2SP_092086_20260123_20260124_02_T1",
+      "utc": "2026-01-23T00:03:46.7770320Z",
+      "local_time": "23 Jan 2026 · 11:03:46 AEDT",
+      "sun_elevation": 53.86735217,
+      "sun_azimuth": 70.30110823,
+      "scene_cloud_pct": 0.01,
+      "unit": "°C",
+      "grid_m": 30,
+      "native_thermal_m": 100,
+      "scale": 0.00341802,
+      "offset_kelvin": 149.0,
+      "method": "Sun-exposed open ground; 2.5 m quadrature; area × exp(-2(d/R)^2); 80% valid area and weight; >=3 valid resampled cells",
+      "uncertainty": "ST_QA × 0.01 K; reported, not a further cutoff",
+      "qa_excluded_bits": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "qa_not_supplied": [
+        "QA_RADSAT",
+        "ST_CDIST"
+      ],
+      "source_url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-surface-temperature",
+      "license": "USGS public domain",
+      "shapes_file": "heat/20260123-shapes.bin",
+      "shadows_file": "heat/20260123-shadows.bin",
+      "context_buildings": 122414,
+      "quadrature_max_difference_C": 0.005,
+      "assumptions": "Scene-centre sun; flat ground; vertical extrusions; estimated heights; no trees or terrain; buildings beyond study boundary may be missing; contemporary buildings applied to historical observations. Area equivalents are not independent measurements.",
+      "coverage": {
+        "50": {
+          "MARIBYRNONG": {
+            "total": 157,
+            "valid_heat": 157
+          },
+          "MELBOURNE": {
+            "total": 510,
+            "valid_heat": 508
+          },
+          "PORT PHILLIP": {
+            "total": 1377,
+            "valid_heat": 1377
+          },
+          "STONNINGTON": {
+            "total": 198,
+            "valid_heat": 198
+          },
+          "YARRA": {
+            "total": 331,
+            "valid_heat": 331
+          }
+        },
+        "100": {
+          "MARIBYRNONG": {
+            "total": 157,
+            "valid_heat": 157
+          },
+          "MELBOURNE": {
+            "total": 510,
+            "valid_heat": 508
+          },
+          "PORT PHILLIP": {
+            "total": 1377,
+            "valid_heat": 1377
+          },
+          "STONNINGTON": {
+            "total": 198,
+            "valid_heat": 198
+          },
+          "YARRA": {
+            "total": 331,
+            "valid_heat": 331
+          }
+        },
+        "150": {
+          "MARIBYRNONG": {
+            "total": 157,
+            "valid_heat": 157
+          },
+          "MELBOURNE": {
+            "total": 510,
+            "valid_heat": 508
+          },
+          "PORT PHILLIP": {
+            "total": 1377,
+            "valid_heat": 1377
+          },
+          "STONNINGTON": {
+            "total": 198,
+            "valid_heat": 198
+          },
+          "YARRA": {
+            "total": 331,
+            "valid_heat": 331
+          }
+        }
+      },
+      "files": [
+        {
+          "name": "LC09_L2SP_092086_20260123_20260124_02_T1_MTL.txt",
+          "bytes": 15296,
+          "sha256": "1b3ac257d0df7128e405fb81d6219606ecc37dc39514effa615f86e68ab146e3"
+        },
+        {
+          "name": "LC09_L2SP_092086_20260123_20260124_02_T1_ST_B10.TIF",
+          "bytes": 87276703,
+          "sha256": "728ce1dadfd9dc054eff9c0d35b9b8c4396d1b9de736f5c7469fbcc3eb43f6d9"
+        },
+        {
+          "name": "LC09_L2SP_092086_20260123_20260124_02_T1_QA_PIXEL.TIF",
+          "bytes": 535335,
+          "sha256": "1afc7a1146bea53bc01a42199274abc44e32e43fb28d0b747e0128203e2201db"
+        },
+        {
+          "name": "LC09_L2SP_092086_20260123_20260124_02_T1_ST_QA.TIF",
+          "bytes": 23527652,
+          "sha256": "d805c122a7d8fcf33eab9dffd1c9a3332acb1733c8f29a54bfb5e40d84001b64"
+        }
+      ],
+      "kind": "observation",
+      "short_label": "23 Jan 2026",
+      "raster_qa_audit": {
+        "analysis_grid_cells": 344980,
+        "positive_temperature_cells": 344980,
+        "qa_rejected_among_positive": 1051,
+        "valid_heat_cells": 343929,
+        "qa_zero_with_valid_temperature": 0,
+        "qa_negative_with_valid_temperature": 0,
+        "bit_counts_among_positive": {
+          "0": 0,
+          "1": 578,
+          "2": 0,
+          "3": 183,
+          "4": 374,
+          "5": 0
+        }
+      },
+      "small_50m_area_count": 2406,
+      "heat_use": "Selectable H input, with date-specific solar geometry"
+    },
+    {
+      "id": "landsat-20260130",
+      "date": "2026-01-30",
+      "label": "30 Jan 2026 · Landsat 9",
+      "source": "USGS Landsat Collection 2 Level-2 surface temperature",
+      "scene": "LC09_L2SP_093086_20260130_20260131_02_T1",
+      "utc": "2026-01-30T00:09:52.2264500Z",
+      "local_time": "30 Jan 2026 · 11:09:52 AEDT",
+      "sun_elevation": 52.48313109,
+      "sun_azimuth": 68.34629066,
+      "scene_cloud_pct": 7.67,
+      "unit": "°C",
+      "grid_m": 30,
+      "native_thermal_m": 100,
+      "scale": 0.00341802,
+      "offset_kelvin": 149.0,
+      "method": "Sun-exposed open ground; 2.5 m quadrature; area × exp(-2(d/R)^2); 80% valid area and weight; >=3 valid resampled cells",
+      "uncertainty": "ST_QA × 0.01 K; reported, not a further cutoff",
+      "qa_excluded_bits": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "qa_not_supplied": [
+        "QA_RADSAT",
+        "ST_CDIST"
+      ],
+      "source_url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-surface-temperature",
+      "license": "USGS public domain",
+      "shapes_file": "heat/20260130-shapes.bin",
+      "shadows_file": "heat/20260130-shadows.bin",
+      "context_buildings": 122414,
+      "quadrature_max_difference_C": 0.001,
+      "assumptions": "Scene-centre sun; flat ground; vertical extrusions; estimated heights; no trees or terrain; buildings beyond study boundary may be missing; contemporary buildings applied to historical observations. Area equivalents are not independent measurements.",
+      "coverage": {
+        "50": {
+          "MARIBYRNONG": {
+            "total": 157,
+            "valid_heat": 86
+          },
+          "MELBOURNE": {
+            "total": 510,
+            "valid_heat": 204
+          },
+          "PORT PHILLIP": {
+            "total": 1377,
+            "valid_heat": 740
+          },
+          "STONNINGTON": {
+            "total": 198,
+            "valid_heat": 110
+          },
+          "YARRA": {
+            "total": 331,
+            "valid_heat": 241
+          }
+        },
+        "100": {
+          "MARIBYRNONG": {
+            "total": 157,
+            "valid_heat": 81
+          },
+          "MELBOURNE": {
+            "total": 510,
+            "valid_heat": 195
+          },
+          "PORT PHILLIP": {
+            "total": 1377,
+            "valid_heat": 743
+          },
+          "STONNINGTON": {
+            "total": 198,
+            "valid_heat": 111
+          },
+          "YARRA": {
+            "total": 331,
+            "valid_heat": 244
+          }
+        },
+        "150": {
+          "MARIBYRNONG": {
+            "total": 157,
+            "valid_heat": 78
+          },
+          "MELBOURNE": {
+            "total": 510,
+            "valid_heat": 164
+          },
+          "PORT PHILLIP": {
+            "total": 1377,
+            "valid_heat": 720
+          },
+          "STONNINGTON": {
+            "total": 198,
+            "valid_heat": 113
+          },
+          "YARRA": {
+            "total": 331,
+            "valid_heat": 237
+          }
+        }
+      },
+      "files": [
+        {
+          "name": "LC09_L2SP_093086_20260130_20260131_02_T1_MTL.txt",
+          "bytes": 15297,
+          "sha256": "b0538888b35048fc6df4ba101b0974340688d224d755ca2dda39384aaf5997fa"
+        },
+        {
+          "name": "LC09_L2SP_093086_20260130_20260131_02_T1_ST_B10.TIF",
+          "bytes": 91181600,
+          "sha256": "a8007d262f6cff9a8b678d0190fbd19b338b4ddc51fe9d95f753fef0bb12af61"
+        },
+        {
+          "name": "LC09_L2SP_093086_20260130_20260131_02_T1_QA_PIXEL.TIF",
+          "bytes": 2442796,
+          "sha256": "4885a8ae154d9ecdd55272640b7b0895c605e2354e6245510ca96915ecc91869"
+        },
+        {
+          "name": "LC09_L2SP_093086_20260130_20260131_02_T1_ST_QA.TIF",
+          "bytes": 35090075,
+          "sha256": "86f129e4f864499f101c8b5c1c3707ea3a65f9f3a4047bd39397eec542101f40"
+        }
+      ],
+      "kind": "observation",
+      "short_label": "30 Jan 2026",
+      "raster_qa_audit": {
+        "analysis_grid_cells": 344980,
+        "positive_temperature_cells": 344980,
+        "qa_rejected_among_positive": 84468,
+        "valid_heat_cells": 260512,
+        "qa_zero_with_valid_temperature": 0,
+        "qa_negative_with_valid_temperature": 0,
+        "bit_counts_among_positive": {
+          "0": 0,
+          "1": 38888,
+          "2": 6338,
+          "3": 24812,
+          "4": 39576,
+          "5": 0
+        }
+      },
+      "small_50m_area_count": 2408,
+      "heat_use": "Selectable H input, with date-specific solar geometry"
+    },
+    {
+      "id": "landsat-20260207",
+      "date": "2026-02-07",
+      "label": "07 Feb 2026 · Landsat 8",
+      "source": "USGS Landsat Collection 2 Level-2 surface temperature",
+      "scene": "LC08_L2SP_093086_20260207_20260218_02_T1",
+      "utc": "2026-02-07T00:09:40.6248170Z",
+      "local_time": "07 Feb 2026 · 11:09:40 AEDT",
+      "sun_elevation": 50.77530104,
+      "sun_azimuth": 65.7297437,
+      "scene_cloud_pct": 0.94,
+      "unit": "°C",
+      "grid_m": 30,
+      "native_thermal_m": 100,
+      "scale": 0.00341802,
+      "offset_kelvin": 149.0,
+      "method": "Sun-exposed open ground; 2.5 m quadrature; area × exp(-2(d/R)^2); 80% valid area and weight; >=3 valid resampled cells",
+      "uncertainty": "ST_QA × 0.01 K; reported, not a further cutoff",
+      "qa_excluded_bits": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "qa_not_supplied": [
+        "QA_RADSAT",
+        "ST_CDIST"
+      ],
+      "source_url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-surface-temperature",
+      "license": "USGS public domain",
+      "shapes_file": "heat/20260207-shapes.bin",
+      "shadows_file": "heat/20260207-shadows.bin",
+      "context_buildings": 122414,
+      "quadrature_max_difference_C": 0.003,
+      "assumptions": "Scene-centre sun; flat ground; vertical extrusions; estimated heights; no trees or terrain; buildings beyond study boundary may be missing; contemporary buildings applied to historical observations. Area equivalents are not independent measurements.",
+      "coverage": {
+        "50": {
+          "MARIBYRNONG": {
+            "total": 157,
+            "valid_heat": 68
+          },
+          "MELBOURNE": {
+            "total": 510,
+            "valid_heat": 75
+          },
+          "PORT PHILLIP": {
+            "total": 1377,
+            "valid_heat": 535
+          },
+          "STONNINGTON": {
+            "total": 198,
+            "valid_heat": 67
+          },
+          "YARRA": {
+            "total": 331,
+            "valid_heat": 26
+          }
+        },
+        "100": {
+          "MARIBYRNONG": {
+            "total": 157,
+            "valid_heat": 66
+          },
+          "MELBOURNE": {
+            "total": 510,
+            "valid_heat": 63
+          },
+          "PORT PHILLIP": {
+            "total": 1377,
+            "valid_heat": 519
+          },
+          "STONNINGTON": {
+            "total": 198,
+            "valid_heat": 67
+          },
+          "YARRA": {
+            "total": 331,
+            "valid_heat": 23
+          }
+        },
+        "150": {
+          "MARIBYRNONG": {
+            "total": 157,
+            "valid_heat": 60
+          },
+          "MELBOURNE": {
+            "total": 510,
+            "valid_heat": 55
+          },
+          "PORT PHILLIP": {
+            "total": 1377,
+            "valid_heat": 477
+          },
+          "STONNINGTON": {
+            "total": 198,
+            "valid_heat": 63
+          },
+          "YARRA": {
+            "total": 331,
+            "valid_heat": 22
+          }
+        }
+      },
+      "files": [
+        {
+          "name": "LC08_L2SP_093086_20260207_20260218_02_T1_MTL.txt",
+          "bytes": 15451,
+          "sha256": "bdd5a091ca3e3f9020193424b1f2f38a57e5bef59a44e79516fdb0e21d328e2b"
+        },
+        {
+          "name": "LC08_L2SP_093086_20260207_20260218_02_T1_ST_B10.TIF",
+          "bytes": 87655456,
+          "sha256": "188838c1e68a85c419191cadf9cf898e85730a90917a812ef0bb45cade65bbd3"
+        },
+        {
+          "name": "LC08_L2SP_093086_20260207_20260218_02_T1_QA_PIXEL.TIF",
+          "bytes": 1100762,
+          "sha256": "f1b7180dbf4f02d140a44d20937115ab4810032537e0791278478e6325cdd858"
+        },
+        {
+          "name": "LC08_L2SP_093086_20260207_20260218_02_T1_ST_QA.TIF",
+          "bytes": 29417196,
+          "sha256": "477f2930f65849cd29f86a04a8c27e4e52a0d22346473722b55b93ae073f727a"
+        }
+      ],
+      "kind": "observation",
+      "short_label": "07 Feb 2026",
+      "raster_qa_audit": {
+        "analysis_grid_cells": 344980,
+        "positive_temperature_cells": 344980,
+        "qa_rejected_among_positive": 104779,
+        "valid_heat_cells": 240201,
+        "qa_zero_with_valid_temperature": 0,
+        "qa_negative_with_valid_temperature": 0,
+        "bit_counts_among_positive": {
+          "0": 0,
+          "1": 52652,
+          "2": 0,
+          "3": 24332,
+          "4": 56460,
+          "5": 0
+        }
+      },
+      "small_50m_area_count": 2418,
+      "heat_use": "Selectable H input, with date-specific solar geometry"
+    },
+    {
+      "id": "landsat-20260215",
+      "date": "2026-02-15",
+      "label": "15 Feb 2026 · Landsat 9",
+      "source": "USGS Landsat Collection 2 Level-2 surface temperature",
+      "scene": "LC09_L2SP_093086_20260215_20260216_02_T1",
+      "utc": "2026-02-15T00:09:49.5320460Z",
+      "local_time": "15 Feb 2026 · 11:09:49 AEDT",
+      "sun_elevation": 49.01358982,
+      "sun_azimuth": 62.71214749,
+      "scene_cloud_pct": 0.62,
+      "unit": "°C",
+      "grid_m": 30,
+      "native_thermal_m": 100,
+      "scale": 0.00341802,
+      "offset_kelvin": 149.0,
+      "method": "Sun-exposed open ground; 2.5 m quadrature; area × exp(-2(d/R)^2); 80% valid area and weight; >=3 valid resampled cells",
+      "uncertainty": "ST_QA × 0.01 K; reported, not a further cutoff",
+      "qa_excluded_bits": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "qa_not_supplied": [
+        "QA_RADSAT",
+        "ST_CDIST"
+      ],
+      "source_url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-surface-temperature",
+      "license": "USGS public domain",
+      "shapes_file": "heat/20260215-shapes.bin",
+      "shadows_file": "heat/20260215-shadows.bin",
+      "context_buildings": 122414,
+      "quadrature_max_difference_C": 0.002,
+      "assumptions": "Scene-centre sun; flat ground; vertical extrusions; estimated heights; no trees or terrain; buildings beyond study boundary may be missing; contemporary buildings applied to historical observations. Area equivalents are not independent measurements.",
+      "coverage": {
+        "50": {
+          "MARIBYRNONG": {
+            "total": 157,
+            "valid_heat": 155
+          },
+          "MELBOURNE": {
+            "total": 510,
+            "valid_heat": 337
+          },
+          "PORT PHILLIP": {
+            "total": 1377,
+            "valid_heat": 725
+          },
+          "STONNINGTON": {
+            "total": 198,
+            "valid_heat": 133
+          },
+          "YARRA": {
+            "total": 331,
+            "valid_heat": 292
+          }
+        },
+        "100": {
+          "MARIBYRNONG": {
+            "total": 157,
+            "valid_heat": 157
+          },
+          "MELBOURNE": {
+            "total": 510,
+            "valid_heat": 335
+          },
+          "PORT PHILLIP": {
+            "total": 1377,
+            "valid_heat": 751
+          },
+          "STONNINGTON": {
+            "total": 198,
+            "valid_heat": 131
+          },
+          "YARRA": {
+            "total": 331,
+            "valid_heat": 297
+          }
+        },
+        "150": {
+          "MARIBYRNONG": {
+            "total": 157,
+            "valid_heat": 157
+          },
+          "MELBOURNE": {
+            "total": 510,
+            "valid_heat": 321
+          },
+          "PORT PHILLIP": {
+            "total": 1377,
+            "valid_heat": 730
+          },
+          "STONNINGTON": {
+            "total": 198,
+            "valid_heat": 130
+          },
+          "YARRA": {
+            "total": 331,
+            "valid_heat": 298
+          }
+        }
+      },
+      "files": [
+        {
+          "name": "LC09_L2SP_093086_20260215_20260216_02_T1_MTL.txt",
+          "bytes": 15296,
+          "sha256": "b806f77c0f754920254d3317598b561e349a44227d9bad00791ca5318ec448b0"
+        },
+        {
+          "name": "LC09_L2SP_093086_20260215_20260216_02_T1_ST_B10.TIF",
+          "bytes": 86816217,
+          "sha256": "ea31ed3ac9d48764a35adcf3fd09ee732d94654d6c472db11ea0170fb3f4e7c2"
+        },
+        {
+          "name": "LC09_L2SP_093086_20260215_20260216_02_T1_QA_PIXEL.TIF",
+          "bytes": 963319,
+          "sha256": "04c27a762764ff1526afdd54ba06aefc995c6748efc959c164a34336b1cd6f12"
+        },
+        {
+          "name": "LC09_L2SP_093086_20260215_20260216_02_T1_ST_QA.TIF",
+          "bytes": 29176388,
+          "sha256": "3b21d6cd609af2d37cde63ba53bd8d1ecd67366f1e49e20fa9a01e2244fcf567"
+        }
+      ],
+      "kind": "observation",
+      "short_label": "15 Feb 2026",
+      "raster_qa_audit": {
+        "analysis_grid_cells": 344980,
+        "positive_temperature_cells": 344980,
+        "qa_rejected_among_positive": 42115,
+        "valid_heat_cells": 302865,
+        "qa_zero_with_valid_temperature": 0,
+        "qa_negative_with_valid_temperature": 0,
+        "bit_counts_among_positive": {
+          "0": 0,
+          "1": 18935,
+          "2": 0,
+          "3": 9200,
+          "4": 21326,
+          "5": 0
+        }
+      },
+      "small_50m_area_count": 2429,
+      "heat_use": "Selectable H input, with date-specific solar geometry"
+    },
+    {
+      "id": "landsat-20260216",
+      "date": "2026-02-16",
+      "label": "16 Feb 2026 · Landsat 8",
+      "source": "USGS Landsat Collection 2 Level-2 surface temperature",
+      "scene": "LC08_L2SP_092086_20260216_20260221_02_T1",
+      "utc": "2026-02-16T00:03:28.5314730Z",
+      "local_time": "16 Feb 2026 · 11:03:28 AEDT",
+      "sun_elevation": 48.75656946,
+      "sun_azimuth": 62.36417386,
+      "scene_cloud_pct": 0.61,
+      "unit": "°C",
+      "grid_m": 30,
+      "native_thermal_m": 100,
+      "scale": 0.00341802,
+      "offset_kelvin": 149.0,
+      "method": "Sun-exposed open ground; 2.5 m quadrature; area × exp(-2(d/R)^2); 80% valid area and weight; >=3 valid resampled cells",
+      "uncertainty": "ST_QA × 0.01 K; reported, not a further cutoff",
+      "qa_excluded_bits": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "qa_not_supplied": [
+        "QA_RADSAT",
+        "ST_CDIST"
+      ],
+      "source_url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-surface-temperature",
+      "license": "USGS public domain",
+      "shapes_file": "heat/20260216-shapes.bin",
+      "shadows_file": "heat/20260216-shadows.bin",
+      "context_buildings": 122414,
+      "quadrature_max_difference_C": 0.008,
+      "assumptions": "Scene-centre sun; flat ground; vertical extrusions; estimated heights; no trees or terrain; buildings beyond study boundary may be missing; contemporary buildings applied to historical observations. Area equivalents are not independent measurements.",
+      "coverage": {
+        "50": {
+          "MARIBYRNONG": {
+            "total": 157,
+            "valid_heat": 157
+          },
+          "MELBOURNE": {
+            "total": 510,
+            "valid_heat": 507
+          },
+          "PORT PHILLIP": {
+            "total": 1377,
+            "valid_heat": 1377
+          },
+          "STONNINGTON": {
+            "total": 198,
+            "valid_heat": 198
+          },
+          "YARRA": {
+            "total": 331,
+            "valid_heat": 331
+          }
+        },
+        "100": {
+          "MARIBYRNONG": {
+            "total": 157,
+            "valid_heat": 157
+          },
+          "MELBOURNE": {
+            "total": 510,
+            "valid_heat": 510
+          },
+          "PORT PHILLIP": {
+            "total": 1377,
+            "valid_heat": 1377
+          },
+          "STONNINGTON": {
+            "total": 198,
+            "valid_heat": 198
+          },
+          "YARRA": {
+            "total": 331,
+            "valid_heat": 331
+          }
+        },
+        "150": {
+          "MARIBYRNONG": {
+            "total": 157,
+            "valid_heat": 157
+          },
+          "MELBOURNE": {
+            "total": 510,
+            "valid_heat": 510
+          },
+          "PORT PHILLIP": {
+            "total": 1377,
+            "valid_heat": 1377
+          },
+          "STONNINGTON": {
+            "total": 198,
+            "valid_heat": 198
+          },
+          "YARRA": {
+            "total": 331,
+            "valid_heat": 331
+          }
+        }
+      },
+      "files": [
+        {
+          "name": "LC08_L2SP_092086_20260216_20260221_02_T1_MTL.txt",
+          "bytes": 15451,
+          "sha256": "0064dd2a3b0cc6f245c6c10f1ae66f7ed4ad4586f51957e54f5080f829e1fb6a"
+        },
+        {
+          "name": "LC08_L2SP_092086_20260216_20260221_02_T1_ST_B10.TIF",
+          "bytes": 87026176,
+          "sha256": "1da96de9e5d812c48c2233e6c0b533a6841d42af85e8c35daa77f862c8f43e90"
+        },
+        {
+          "name": "LC08_L2SP_092086_20260216_20260221_02_T1_QA_PIXEL.TIF",
+          "bytes": 845839,
+          "sha256": "6eab8a2987d8c457f4d2226d947cffbd97801fb02eafc6e1eba3c132cfa1729b"
+        },
+        {
+          "name": "LC08_L2SP_092086_20260216_20260221_02_T1_ST_QA.TIF",
+          "bytes": 27184575,
+          "sha256": "88da3041afaf7c2cc8b4b3876333eebd84918654ee83cf7ba9e16f109e52d33b"
+        }
+      ],
+      "kind": "observation",
+      "short_label": "16 Feb 2026",
+      "raster_qa_audit": {
+        "analysis_grid_cells": 344980,
+        "positive_temperature_cells": 344980,
+        "qa_rejected_among_positive": 2105,
+        "valid_heat_cells": 342875,
+        "qa_zero_with_valid_temperature": 0,
+        "qa_negative_with_valid_temperature": 0,
+        "bit_counts_among_positive": {
+          "0": 0,
+          "1": 947,
+          "2": 0,
+          "3": 324,
+          "4": 1081,
+          "5": 0
+        }
+      },
+      "small_50m_area_count": 2430,
+      "heat_use": "Selectable H input, with date-specific solar geometry"
+    },
+    {
+      "id": "landsat-20260223",
+      "date": "2026-02-23",
+      "label": "23 Feb 2026 · Landsat 8",
+      "source": "USGS Landsat Collection 2 Level-2 surface temperature",
+      "scene": "LC08_L2SP_093086_20260223_20260227_02_T1",
+      "utc": "2026-02-23T00:09:39.0955130Z",
+      "local_time": "23 Feb 2026 · 11:09:39 AEDT",
+      "sun_elevation": 47.09849748,
+      "sun_azimuth": 59.56096036,
+      "scene_cloud_pct": 9.02,
+      "unit": "°C",
+      "grid_m": 30,
+      "native_thermal_m": 100,
+      "scale": 0.00341802,
+      "offset_kelvin": 149.0,
+      "method": "Sun-exposed open ground; 2.5 m quadrature; area × exp(-2(d/R)^2); 80% valid area and weight; >=3 valid resampled cells",
+      "uncertainty": "ST_QA × 0.01 K; reported, not a further cutoff",
+      "qa_excluded_bits": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "qa_not_supplied": [
+        "QA_RADSAT",
+        "ST_CDIST"
+      ],
+      "source_url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-surface-temperature",
+      "license": "USGS public domain",
+      "shapes_file": "heat/20260223-shapes.bin",
+      "shadows_file": "heat/20260223-shadows.bin",
+      "context_buildings": 122414,
+      "quadrature_max_difference_C": 0.009,
+      "assumptions": "Scene-centre sun; flat ground; vertical extrusions; estimated heights; no trees or terrain; buildings beyond study boundary may be missing; contemporary buildings applied to historical observations. Area equivalents are not independent measurements.",
+      "coverage": {
+        "50": {
+          "MARIBYRNONG": {
+            "total": 157,
+            "valid_heat": 17
+          },
+          "MELBOURNE": {
+            "total": 510,
+            "valid_heat": 330
+          },
+          "PORT PHILLIP": {
+            "total": 1377,
+            "valid_heat": 980
+          },
+          "STONNINGTON": {
+            "total": 198,
+            "valid_heat": 135
+          },
+          "YARRA": {
+            "total": 331,
+            "valid_heat": 133
+          }
+        },
+        "100": {
+          "MARIBYRNONG": {
+            "total": 157,
+            "valid_heat": 16
+          },
+          "MELBOURNE": {
+            "total": 510,
+            "valid_heat": 325
+          },
+          "PORT PHILLIP": {
+            "total": 1377,
+            "valid_heat": 950
+          },
+          "STONNINGTON": {
+            "total": 198,
+            "valid_heat": 131
+          },
+          "YARRA": {
+            "total": 331,
+            "valid_heat": 117
+          }
+        },
+        "150": {
+          "MARIBYRNONG": {
+            "total": 157,
+            "valid_heat": 15
+          },
+          "MELBOURNE": {
+            "total": 510,
+            "valid_heat": 313
+          },
+          "PORT PHILLIP": {
+            "total": 1377,
+            "valid_heat": 907
+          },
+          "STONNINGTON": {
+            "total": 198,
+            "valid_heat": 126
+          },
+          "YARRA": {
+            "total": 331,
+            "valid_heat": 107
+          }
+        }
+      },
+      "files": [
+        {
+          "name": "LC08_L2SP_093086_20260223_20260227_02_T1_MTL.txt",
+          "bytes": 15450,
+          "sha256": "ad65762c390c19e1888d71c544a567747c81a54d604954c1caeaf275a83b5cc1"
+        },
+        {
+          "name": "LC08_L2SP_093086_20260223_20260227_02_T1_ST_B10.TIF",
+          "bytes": 85288258,
+          "sha256": "9b54929c2e8f6201f5ca0583136c815df4cad4cf6336cc85f68797485144b99f"
+        },
+        {
+          "name": "LC08_L2SP_093086_20260223_20260227_02_T1_QA_PIXEL.TIF",
+          "bytes": 2029131,
+          "sha256": "72332bbd76b5af6134dedd69998a7a2dc2b2a5ff26a8421afe2ea3489298cc5b"
+        },
+        {
+          "name": "LC08_L2SP_093086_20260223_20260227_02_T1_ST_QA.TIF",
+          "bytes": 29221367,
+          "sha256": "70ee263c2bc867a4426cd230c9a562e466af650364e0e0f7539b9e42bc41cfbc"
+        }
+      ],
+      "kind": "observation",
+      "short_label": "23 Feb 2026",
+      "raster_qa_audit": {
+        "analysis_grid_cells": 344980,
+        "positive_temperature_cells": 344980,
+        "qa_rejected_among_positive": 149560,
+        "valid_heat_cells": 195420,
+        "qa_zero_with_valid_temperature": 0,
+        "qa_negative_with_valid_temperature": 0,
+        "bit_counts_among_positive": {
+          "0": 0,
+          "1": 23108,
+          "2": 34772,
+          "3": 107333,
+          "4": 30073,
+          "5": 0
+        }
+      },
+      "small_50m_area_count": 2440,
+      "heat_use": "Selectable H input, with date-specific solar geometry"
+    },
+    {
+      "id": "landsat-median",
+      "kind": "aggregate",
+      "label": "Multi-date median · at least 3 valid dates",
+      "short_label": "Multi-date median",
+      "date": "29 Dec 2025–23 Feb 2026",
+      "source": "Derived from the 9 listed USGS Landsat 8/9 observations",
+      "source_url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-surface-temperature",
+      "unit": "°C",
+      "grid_m": 30,
+      "native_thermal_m": 100,
+      "method": "Median of valid per-date weighted sun-exposed LST; requires ≥3 dates. Support fields report minima over contributing dates. Not a full-season average.",
+      "assumptions": "Buildings can have different valid-date sets. Clouds and scene selection can bias the summary; use the nine-date complete-case tests to inspect shortlist consistency. No single solar angle or shadow mask applies.",
+      "license": "Derived from USGS public-domain data",
+      "coverage": {
+        "50": {
+          "MARIBYRNONG": {
+            "total": 157,
+            "valid_heat": 157
+          },
+          "MELBOURNE": {
+            "total": 510,
+            "valid_heat": 509
+          },
+          "PORT PHILLIP": {
+            "total": 1377,
+            "valid_heat": 1377
+          },
+          "STONNINGTON": {
+            "total": 198,
+            "valid_heat": 198
+          },
+          "YARRA": {
+            "total": 331,
+            "valid_heat": 331
+          }
+        },
+        "100": {
+          "MARIBYRNONG": {
+            "total": 157,
+            "valid_heat": 157
+          },
+          "MELBOURNE": {
+            "total": 510,
+            "valid_heat": 510
+          },
+          "PORT PHILLIP": {
+            "total": 1377,
+            "valid_heat": 1377
+          },
+          "STONNINGTON": {
+            "total": 198,
+            "valid_heat": 198
+          },
+          "YARRA": {
+            "total": 331,
+            "valid_heat": 331
+          }
+        },
+        "150": {
+          "MARIBYRNONG": {
+            "total": 157,
+            "valid_heat": 157
+          },
+          "MELBOURNE": {
+            "total": 510,
+            "valid_heat": 510
+          },
+          "PORT PHILLIP": {
+            "total": 1377,
+            "valid_heat": 1377
+          },
+          "STONNINGTON": {
+            "total": 198,
+            "valid_heat": 198
+          },
+          "YARRA": {
+            "total": 331,
+            "valid_heat": 331
+          }
+        }
+      },
+      "shapes_file": null,
+      "shadows_file": null,
+      "files": []
+    },
+    {
+      "id": "csiro-2019-lst",
+      "kind": "historical",
+      "label": "CSIRO summer 2018–19 · historical LST",
+      "short_label": "CSIRO 2018–19",
+      "source": "CSIRO; Devereux & Caccetta (2019)",
+      "source_url": "https://doi.org/10.25919/5d8adf30f001e",
+      "date": "2018–19 product",
+      "local_time": "Melbourne source dates: 28 Jan & 24 Mar 2019",
+      "unit": "°C",
+      "grid_m": 30,
+      "source_grid_degrees": 0.00025,
+      "native_thermal_m": 100,
+      "method": "CSIRO published LST (Kelvin − 273.15); nearest-neighbour reprojection to 30 m MGA55 analysis grid; area × distance weighted open ground at 50/100/150 m. No single-date shadow mask is applied to this historical mosaic.",
+      "assumptions": "Historical context, not current weather or a trend. Contemporary footprint exclusions approximate present-day surroundings; buildings may differ from 2019. CSIRO retrieval differs from USGS Collection 2. Source QA and scene-by-scene contributions are unavailable in this delivered mosaic.",
+      "license": "CC BY 4.0; CSIRO 2019",
+      "coverage": {
+        "50": {
+          "MARIBYRNONG": {
+            "total": 157,
+            "valid_heat": 157
+          },
+          "MELBOURNE": {
+            "total": 510,
+            "valid_heat": 510
+          },
+          "PORT PHILLIP": {
+            "total": 1377,
+            "valid_heat": 1377
+          },
+          "STONNINGTON": {
+            "total": 198,
+            "valid_heat": 198
+          },
+          "YARRA": {
+            "total": 331,
+            "valid_heat": 331
+          }
+        },
+        "100": {
+          "MARIBYRNONG": {
+            "total": 157,
+            "valid_heat": 157
+          },
+          "MELBOURNE": {
+            "total": 510,
+            "valid_heat": 510
+          },
+          "PORT PHILLIP": {
+            "total": 1377,
+            "valid_heat": 1377
+          },
+          "STONNINGTON": {
+            "total": 198,
+            "valid_heat": 198
+          },
+          "YARRA": {
+            "total": 331,
+            "valid_heat": 331
+          }
+        },
+        "150": {
+          "MARIBYRNONG": {
+            "total": 157,
+            "valid_heat": 157
+          },
+          "MELBOURNE": {
+            "total": 510,
+            "valid_heat": 510
+          },
+          "PORT PHILLIP": {
+            "total": 1377,
+            "valid_heat": 1377
+          },
+          "STONNINGTON": {
+            "total": 198,
+            "valid_heat": 198
+          },
+          "YARRA": {
+            "total": 331,
+            "valid_heat": 331
+          }
+        }
+      },
+      "files": [
+        {
+          "filename": "LST and UHI effect for Australian urban centres (EP173542).pdf",
+          "url": "https://data.csiro.au/dap/ws/v2/collections/41378/data/54974377",
+          "bytes": 8276030,
+          "sha256": "b73cedf52aff22dff1366136f3c33c3cb91541286cfee3b675a8961a8e7a6b12"
+        },
+        {
+          "filename": "LST and UHI for Australian capital cities — processing notes for 2018-19.pdf",
+          "url": "https://data.csiro.au/dap/ws/v2/collections/41378/data/54974370",
+          "bytes": 2931532,
+          "sha256": "111c832dbf6b7c67a1fd79516d2ecee2d97ab32061c115454eb58606cefc5300"
+        },
+        {
+          "filename": "Melbourne_2018-19_LST_wgs84.tif",
+          "url": "https://data.csiro.au/dap/ws/v2/collections/41378/data/54974371",
+          "bytes": 207425889,
+          "sha256": "66686706d1ec8342f099f30768834d3e15a4933da46bfa7a8e8482a6d02fd704"
+        },
+        {
+          "filename": "Melbourne_2018-19_UHI_wgs84.tif",
+          "url": "https://data.csiro.au/dap/ws/v2/collections/41378/data/54974381",
+          "bytes": 207425889,
+          "sha256": "af812700f79bd308830084a7c10f7776e1ce5d18fc32a33c59e9efd6eda76e6c"
+        }
+      ],
+      "shapes_file": null,
+      "shadows_file": null
+    }
+  ],
+  "context_sources": [
+    {
+      "id": "csiro-2019-uhi",
+      "label": "CSIRO 2018–19 surface urban heat island (UHI)",
+      "description": "Landsat-derived surface-temperature difference from an estimated non-urban vegetation baseline. Melbourne source scenes: 28 Jan and 24 Mar 2019. UHI is a temperature difference in °C, not absolute LST.",
+      "role": "Area/distance-weighted 50/100/150 m open-ground context for every building; displayed and exported, without adding a fourth score indicator.",
+      "coverage_note": "2,573 / 2,573 candidates have valid 100 m UHI context.",
+      "limits": "Historical mosaic; different retrieval from USGS Collection 2. No scene-specific pixel QA or per-date contribution map was supplied. It is not cooling, air temperature or a before/after evaluation.",
+      "source_url": "https://doi.org/10.25919/5d8adf30f001e",
+      "attribution": "Devereux & Caccetta (2019), CSIRO",
+      "license": "CC BY 4.0",
+      "files": [
+        {
+          "filename": "Melbourne_2018-19_UHI_wgs84.tif",
+          "url": "https://data.csiro.au/dap/ws/v2/collections/41378/data/54974381",
+          "bytes": 207425889,
+          "sha256": "af812700f79bd308830084a7c10f7776e1ce5d18fc32a33c59e9efd6eda76e6c"
+        }
+      ]
+    },
+    {
+      "id": "vic-2018-uhi",
+      "label": "Victoria 2018 urban heat & vegetation · Mesh Blocks",
+      "description": "Department of Transport and Planning Cooling and Greening layer: UHI18_M (°C difference from non-urban baseline), PERANYVEG and PERANYTREE (%); source geography is 2016 Mesh Blocks.",
+      "role": "Match each footprint interior point to one source polygon. Show the area-level heat, vegetation and tree context in the building evidence; not an extra H/I/B weighting.",
+      "coverage_note": "Downloaded 6,976 polygons across all five councils. 2,573 / 2,573 candidates have a unique polygon match.",
+      "limits": "Shared area values do not distinguish buildings within a Mesh Block. Point assignment is not a building survey. Missing or ambiguous spatial matches remain unavailable. Source geometry and vegetation predate the current building inventory.",
+      "source_url": "https://discover.data.vic.gov.au/dataset/metropolitan-melbourne-urban-heat-islands-and-urban-vegetation-2018",
+      "service_url": "https://plan-gis.mapshare.vic.gov.au/arcgis/rest/services/CoolingGreening/CoolingGreening/MapServer/55",
+      "attribution": "State of Victoria; Department of Transport and Planning / DEECA",
+      "license": "CC BY 4.0",
+      "files": [
+        {
+          "filename": "vic2018-features.json",
+          "bytes": 7614484,
+          "sha256": "f4328f6c44555afe34317ab6820bd87aac2f76cc57cec645843f7880b650ef92"
+        }
+      ]
+    },
+    {
+      "id": "climate-victoria",
+      "label": "Climate Victoria · monthly maximum-temperature normals, 1981–2010",
+      "description": "CSIRO Climate Victoria Maximum Temperature (3DS-M), version 4 (2020). Twelve monthly climatology rasters on a 9-arcsecond (~250 m) grid, representing near-surface air temperature about 1.2 m above ground. Based on station observations, spline interpolation, elevation and MODIS LST dependence.",
+      "role": "Sample all 12 monthly normals at the footprint interior point. Display as historical air-temperature context; never average into Landsat LST or add it to H.",
+      "coverage_note": "2,563 / 2,573 candidates have all 12 monthly normals.",
+      "limits": "Only the 1981–2010 climatology archive was downloaded. The full 1981–2019 daily and monthly time-series archives are not loaded. This is a long-term normal, not a 2026 observation, indoor temperature or building-scale measurement.",
+      "source_url": "https://data.csiro.au/collection/csiro:34178v4",
+      "attribution": "Stewart, Stephen; & Nitschke, Craig (2017): Climate Victoria: Maximum Temperature (3DS-M; 9 second, approx. 250 m). v4. CSIRO. Data Collection. https://doi.org/10.25919/5e5d9033d8cc7",
+      "license": "CC BY 4.0",
+      "files": [
+        {
+          "file": "maxt_3ds_m_normals_19812010.zip",
+          "url": "https://data.csiro.au/dap/ws/v2/collections/44941/data/55936440",
+          "bytes": 194529758,
+          "sha256": "a66bdd9145dd91e4b29ae88d72ded9dac084fec71c8091bdcbfb59bb979eb6b4"
+        }
+      ]
+    }
+  ],
+  "method": {
+    "assumptions": "Scene-centre solar geometry, flat ground and vertical extrusions. Many building heights are estimated. No trees, terrain, facades or heat transfer are modelled. Neighbouring buildings beyond the study inventory may be missing. Geometry and image dates differ. At least three 30 m cells is an exploratory screening threshold, not proof that the native thermal sensor resolves this buffer."
+  },
+  "peer_method_note": "Group 61 (pages 20–22, 31–32 and data/reference lists) describes SA1 temperature averaging and cites several heat sources, but does not identify the exact temperature file, version or averaging interval used in its final map. Its supplied methods diagram and narrative also differ in the final component weight. HEATSCAPE therefore documents the official datasets retrieved and does not claim exact replication of that report. ECOSTRESS in the report refers to a material spectral library, not a supplied thermal-image series.",
+  "inventory_note": "9 unique Landsat scenes; each has ST_B10, QA_PIXEL, ST_QA and MTL. The extra Jan 6 MTL (1).txt is a byte-identical duplicate and is counted once. No original source files were modified. Files are recorded by name, size and SHA-256; derived model values are bundled locally for the public static site."
+}

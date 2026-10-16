@@ -15,15 +15,15 @@ The standard suite combines each of 50, 100 and 150 m with these H / I / B weigh
 | No building scale | 50% | 50% | 0% |
 | Equal shares | 1/3 | 1/3 | 1/3 |
 
-There are 18 tests using the active heat model. “Also test the original heat model” includes both original and sunlit models, producing 36 tests. If current weights are not a preset, three additional tests (or six with both heat models) are included. Equal shares use exact thirds; the displayed percentages are rounded.
+There are 18 tests for the selected heat source. Test all 9 Landsat dates produces 162 tests (9 × 6 × 3); custom weights add three tests per date. The median and historical source are not mixed into the nine-date suite. Equal shares use exact thirds; displayed percentages are rounded.
 
-Click a matrix cell to apply its model, radius and weights to the live score, rank and scatter. The matrix shows shortlist counts until a building is selected, then that building's rank and In/Out status for every test. The highlighted cell matches the active settings. All tests reuse the existing 7 January 2026 observation; they are not multi-date validation.
+Click a matrix cell to apply its date/source, radius and weights to the live score, rank and scatter. The matrix shows shortlist counts until a building is selected, then that building's rank and In/Out status for every test. The highlighted cell matches the active settings. The nine-date suite checks temporal sensitivity on the supplied dates. It is not validation against measured indoor conditions or a complete seasonal record.
 
 ## Comparable ranks and missing evidence
 
 The overview explains that Consistent Top means shortlisted in every tested setting, and that the count changes with shortlist size and test settings. Selecting a building adds a plain-language interpretation of its actual result: all, some, none, or incomplete evidence. Consistent shortlist membership does not imply a constant rank, and missing evidence is not described as a failed selection.
 
-Each scenario uses the existing H/I/B calculation and fixed reference distributions. Tests do not modify raw measurements. The shared comparison cohort is the intersection of candidates with valid scores in every test. The same buildings and shortlist size are used throughout a suite:
+Each scenario uses the same H/I/B formula. Heat reference curves depend on source and extent; income and building references remain fixed. Tests do not modify raw measurements. The shared comparison cohort is the intersection of candidates with valid scores in every test. The same buildings and shortlist size are used throughout a suite:
 
 - Count mode: requested positions = min(requested count, shared cohort size).
 - Percentage mode: requested positions = ceil(shared cohort size × requested percentage / 100).
@@ -32,7 +32,7 @@ Each scenario uses the existing H/I/B calculation and fixed reference distributi
 - A building missing a required observation in any test is marked “Insufficient evidence”. Its valid-test count is shown, but comparative selection count and rank range are blank. It is excluded from every comparative ranking, rather than changing the peers from test to test. Missing evidence is never coded as a failed selection.
 - “All tested settings” requires complete evidence and selection in every test. It is not a probability, proof of need, or a guarantee across untested settings.
 
-The reference distributions are unchanged. The active system score/rank still uses its normal eligible cohort; the list labels this “Now”. If the complete-case comparison cohort is smaller, its test ranks may differ from the normal active rank even with identical settings.
+Reference distributions do not change with weights or shortlist filters. The active system score/rank still uses its normal eligible cohort; the list labels this “Now”. If the complete-case comparison cohort is smaller, its test ranks may differ from the normal active rank even with identical settings.
 
 ## Filters, map and exports
 
