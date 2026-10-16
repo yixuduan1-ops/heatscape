@@ -44,7 +44,7 @@
     });
     summaries.forEach((s,i)=>{if(shared[i])s.status=s.selected===s.total?'all':s.selected>0?'some':'none';});
     const counts={all:0,some:0,none:0,insufficient:0};summaries.forEach(s=>counts[s.status]++);
-    return {tests,rows:summaries,cohort,requested,counts,settings:{...settings},version:'ranking-stability-integrated-v3'};
+    return {tests,rows:summaries,cohort,requested,counts,settings:{...settings},version:'ranking-stability-temperature-v4'};
   }
   const api={presets,scenarios,run};if(typeof module!=='undefined')module.exports=api;else root.RankingStability=Object.freeze(api);
 })(typeof window!=='undefined'?window:globalThis);

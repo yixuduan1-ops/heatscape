@@ -56,10 +56,7 @@
     }).join('')}</tr>`;
    }).join('');
    $('stabilityRows').querySelectorAll('tr').forEach(el=>el.classList.toggle('selected-building',el.dataset.building===selected));
-   renderSupport(r);
-  }
-  function renderSupport(r){
-   $('thermalSupport').innerHTML=r?`<p class="support-name">${esc(r.building_name||r.building_id)} · multi-day heat · minima over contributing dates</p><table><thead><tr><th>Extent</th><th>30 m cells</th><th>Valid area</th><th>Sampled area</th></tr></thead><tbody>${[50,100,150].map(radius=>{const v=r.sunlit?.[radius];return `<tr><td>${radius} m</td><td>${number(v?.pixels)}</td><td>${number(v?.valid_pct,1)}%</td><td>${number(v?.area_m2)} m²</td></tr>`}).join('')}</tbody></table>`:'<p>Select a building to inspect its pixel support at each extent.</p>';
+
   }
   function render(){
    if(!suite)return;

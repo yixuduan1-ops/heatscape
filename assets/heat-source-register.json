@@ -1,5 +1,5 @@
 {
-  "version": "heat-integrated-v2",
+  "version": "heat-temperature-v3",
   "processed": "16 October 2026",
   "default": "landsat-median",
   "datasets": [
@@ -1559,11 +1559,11 @@
     },
     {
       "id": "vic-2018-uhi",
-      "label": "Victoria 2018 urban heat & vegetation · Mesh Blocks",
-      "description": "Department of Transport and Planning Cooling and Greening layer: UHI18_M (°C difference from non-urban baseline), PERANYVEG and PERANYTREE (%); source geography is 2016 Mesh Blocks.",
-      "role": "UHI percentile supplies one third of historical temperature context. Vegetation/tree deficits supply 20%/30% of the historical branch. Shared Mesh Block values are area context.",
+      "label": "Victoria 2018 surface urban heat island · Mesh Blocks",
+      "description": "UHI18_M is a surface-temperature difference from a non-urban baseline. Assign one 2016 Mesh Block to each footprint interior point.",
+      "role": "One third of the historical temperature index after percentile conversion. No vegetation or canopy fields are loaded or scored.",
       "coverage_note": "Downloaded 6,976 polygons across all five councils. 2,573 / 2,573 candidates have a unique polygon match.",
-      "limits": "Shared area values do not distinguish buildings within a Mesh Block. Point assignment is not a building survey. Missing or ambiguous spatial matches remain unavailable. Source geometry and vegetation predate the current building inventory.",
+      "limits": "An area value shared by buildings in a Mesh Block; not a building measurement. Missing or ambiguous matches remain unavailable. Source boundaries and heat predate the current inventory.",
       "source_url": "https://discover.data.vic.gov.au/dataset/metropolitan-melbourne-urban-heat-islands-and-urban-vegetation-2018",
       "service_url": "https://plan-gis.mapshare.vic.gov.au/arcgis/rest/services/CoolingGreening/CoolingGreening/MapServer/55",
       "attribution": "State of Victoria; Department of Transport and Planning / DEECA",
@@ -1599,6 +1599,6 @@
   "method": {
     "assumptions": "Scene-centre solar geometry, flat ground and vertical extrusions. Many building heights are estimated. No trees, terrain, facades or heat transfer are modelled. Neighbouring buildings beyond the study inventory may be missing. Geometry and image dates differ. At least three 30 m cells is an exploratory screening threshold, not proof that the native thermal sensor resolves this buffer."
   },
-  "peer_method_note": "The historical branch adapts Group 61’s 50% temperature, 20% vegetation and 30% canopy structure. It uses relative temperature percentiles and vegetation/canopy deficits, not the original SA1 risk bins. The exact original temperature file and the full original composite are not reproduced. These are exploratory screening assumptions.",
+  "peer_method_note": "The peer report guided discovery of official historical heat sources. HEATSCAPE uses their temperature fields only and does not reproduce that report’s full composite. The exact source file, version and averaging interval behind its final map were not specified.",
   "inventory_note": "9 unique Landsat scenes; each has ST_B10, QA_PIXEL, ST_QA and MTL. The extra Jan 6 MTL (1).txt is a byte-identical duplicate and is counted once. No original source files were modified. Files are recorded by name, size and SHA-256; derived model values are bundled locally for the public static site."
 }

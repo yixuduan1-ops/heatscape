@@ -17,13 +17,11 @@
  function indicators(r,radius,ref,heatRecentWeight=.7){
   const v=r.heatSeries?.['landsat-median']?.[radius],temp=dailyMedian(r,radius),hRecent=percentile(temp,ref.heat['landsat-median_'+radius]);
   const hist=r.historicalHeat||{},hCsiro=percentile(hist.csiro_uhi?.[radius]?.mean_C,ref.uhi[radius]),hVic=percentile(hist.vic2018?.UHI18_M,ref.vic),hClimate=percentile(climate(r),ref.climate);
-  const hTemperature=[hCsiro,hVic,hClimate].every(finite)?(hCsiro+hVic+hClimate)/3:null;
-  const vegetation=hist.vic2018?.PERANYVEG,canopy=hist.vic2018?.PERANYTREE,hVegetation=finite(vegetation)?1-clip(vegetation/100):null,hCanopy=finite(canopy)?1-clip(canopy/100):null;
-  const hPeer=[hTemperature,hVegetation,hCanopy].every(finite)?.5*hTemperature+.2*hVegetation+.3*hCanopy:null;
-  const h=[hRecent,hPeer].every(finite)?heatRecentWeight*hRecent+(1-heatRecentWeight)*hPeer:null;
+  const hHistorical=[hCsiro,hVic,hClimate].every(finite)?(hCsiro+hVic+hClimate)/3:null;
+  const h=[hRecent,hHistorical].every(finite)?heatRecentWeight*hRecent+(1-heatRecentWeight)*hHistorical:null;
   const iIncome=percentile(r.low_income_under650_pct,ref.income),iRent=percentile(r.economic?.rent_income_area_ratio,ref.rent),inc=[iIncome,iRent].every(finite)?.7*iIncome+.3*iRent:null;
   const heightIndex=positive(r.lod1_height)?percentile(r.lod1_height,ref.height):null,areaIndex=positive(r.footprint_area_m2)?percentile(r.footprint_area_m2,ref.area):null,b=[heightIndex,areaIndex].every(finite)?percentile((heightIndex+areaIndex)/2,ref.building):null;
-  return {temp,coverage:v?.valid_pct??0,weightedCoverage:v?.weighted_valid_pct??0,uncertainty:null,dateCount:v?.date_count??0,h,hRecent,hPeer,hTemperature,hCsiro,hVic,hClimate,hVegetation,hCanopy,heatRecentWeight,iIncome,iRent,inc,b,heightIndex,areaIndex};
+  return {temp,coverage:v?.valid_pct??0,weightedCoverage:v?.weighted_valid_pct??0,uncertainty:null,dateCount:v?.date_count??0,h,hRecent,hHistorical,hCsiro,hVic,hClimate,heatRecentWeight,iIncome,iRent,inc,b,heightIndex,areaIndex};
  }
  function evaluate(all,{radius=100,balance=50,building=20,topMode='percent',topValue=20,heatRecentWeight=.7}={},ref=references(all)){
   const heatDataset='landsat-median',anchors=ref.heat[heatDataset+'_'+radius]||[];
@@ -32,7 +30,7 @@
   const valid=rows.filter(r=>finite(r.score)).sort((a,b)=>b.score-a.score||a.id.localeCompare(b.id));
   const requested=valid.length===0?0:topMode==='count'?Math.max(1,Math.min(valid.length,Math.round(topValue))):Math.max(1,Math.ceil(valid.length*Math.max(1,Math.min(100,topValue))/100)),cutoff=valid[requested-1]?.score??null;
   valid.forEach((r,i)=>{r.rank=i&&r.score===valid[i-1].score?valid[i-1].rank:i+1;r.top=r.score>=cutoff});
-  return {rows,heatEligible:heatRows.length,eligible:valid.length,shortlisted:valid.filter(r=>r.top).length,cutoff,anchors,settings:{radius,distance:true,balance,building,topMode,topValue,heatDataset,heatRecentWeight},version:'HIB-integrated-v2'};
+  return {rows,heatEligible:heatRows.length,eligible:valid.length,shortlisted:valid.filter(r=>r.top).length,cutoff,anchors,settings:{radius,distance:true,balance,building,topMode,topValue,heatDataset,heatRecentWeight},version:'HIB-temperature-v3'};
  }
  function stability(all,ref,settings={}){const counts=all.map(()=>({eligible:0,selected:0}));for(const radius of [50,100,150])evaluate(all,{...settings,radius},ref).rows.forEach((r,i)=>{if(finite(r.score)){counts[i].eligible++;if(r.top)counts[i].selected++}});return counts}
  const api={weights,finite,positive,clip,quantile,knots,percentile,combine,references,evaluate,stability,indicators,climate,dailyMedian};if(typeof module!=='undefined')module.exports=api;else root.HeatModel=Object.freeze(api);
