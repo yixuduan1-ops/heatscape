@@ -35,7 +35,15 @@
   }
   function renderSelection(){
    if(!suite)return;const r=byId.get(selected),s=r?.rankStability;
-   $('stabilitySelected').innerHTML=r?`<div class="stability-selected-title"><strong>${esc(r.building_name||r.building_id)}</strong><span>${number(r.score,1)}<small>current score / 100</small></span></div><p>${esc(labels[s.status])} · ${s.selected===null?'Not comparable':`${s.selected}/${s.total} selections`} · ${s.valid}/${s.total} valid tests</p>`:'<p>Select a building from the list to see its rank in every test.</p>';
+   const factors=$('stabilityBothModels').checked?'weights, sampling extents and heat models':'weights and sampling extents';
+   const explanation=!s?'':s.status==='insufficient'
+    ?`Only ${s.valid} of ${s.total} tests have sufficient evidence. Its shortlist consistency cannot be assessed across the full test set.`
+    :s.status==='all'
+    ?`Shortlisted in all ${s.total} tested settings. Its shortlist membership stays consistent across this test set; its rank may still change.`
+    :s.status==='some'
+    ?`Shortlisted in ${s.selected} of ${s.total} tested settings. Its ranking is sensitive to the tested ${factors}.`
+    :`Not shortlisted in any of the ${s.total} tested settings at this shortlist size. This does not rule out a need for investigation.`;
+   $('stabilitySelected').innerHTML=r?`<div class="stability-selected-title"><strong>${esc(r.building_name||r.building_id)}</strong><span>${number(r.score,1)}<small>current score / 100</small></span></div><p class="stability-selected-meta">${s.valid}/${s.total} valid tests${s.bestRank===null?'':` · Rank range ${number(s.bestRank)}–${number(s.worstRank)}`}</p><p id="stabilityInterpretation">${esc(explanation)}</p>`:'<p>Select a building from the list to see its rank in every test.</p>';
    $('testBuildingHeading').textContent=r?'Each cell shows this building’s rank and selection.':'Each cell shows the shortlist count. Select a building for its ranks.';
    const groups=[];suite.tests.forEach((t,i)=>{if(i%3===0)groups.push([]);groups.at(-1).push({...t,testIndex:i});});
    $('stabilityTests').innerHTML=groups.map(group=>{

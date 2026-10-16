@@ -21,6 +21,8 @@ Click a matrix cell to apply its model, radius and weights to the live score, ra
 
 ## Comparable ranks and missing evidence
 
+The overview explains that Consistent Top means shortlisted in every tested setting, and that the count changes with shortlist size and test settings. Selecting a building adds a plain-language interpretation of its actual result: all, some, none, or incomplete evidence. Consistent shortlist membership does not imply a constant rank, and missing evidence is not described as a failed selection.
+
 Each scenario uses the existing H/I/B calculation and fixed reference distributions. Tests do not modify raw measurements. The shared comparison cohort is the intersection of candidates with valid scores in every test. The same buildings and shortlist size are used throughout a suite:
 
 - Count mode: requested positions = min(requested count, shared cohort size).
