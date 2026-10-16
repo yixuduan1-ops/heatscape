@@ -13,9 +13,10 @@
     const choices=presets.map(p=>({...p}));
     const live={balance:settings.balance??50,building:settings.building??20};
     if(!choices.some(p=>Math.abs(p.balance-live.balance)<1e-7&&Math.abs(p.building-live.building)<1e-7))choices.push({id:'custom',label:'Your weights',...live});
-    return [.6,.7,.8].flatMap(heatRecentWeight=>choices.flatMap(p=>[50,100,150].map(radius=>({
-      ...p,id:`integrated-${Math.round(heatRecentWeight*100)}-${p.id}-${radius}`,heatDataset:'landsat-median',heatRecentWeight,radius,weights:M.weights(p.balance,p.building)
-    }))));
+    const blends=value=>{const a=[.6,.7,.8],v=M.share(value);if(!a.some(x=>Math.abs(x-v)<1e-7))a.push(v);return a;};
+    return blends(settings.incomeLowWeight).flatMap(incomeLowWeight=>blends(settings.heatRecentWeight).flatMap(heatRecentWeight=>choices.flatMap(p=>[50,100,150].map(radius=>({
+      ...p,id:`adjustable-I${Math.round(incomeLowWeight*100)}-H${Math.round(heatRecentWeight*100)}-${p.id}-${radius}`,heatDataset:'landsat-median',heatRecentWeight,incomeLowWeight,radius,weights:M.weights(p.balance,p.building)
+    })))));
   }
   // Compare identical peers in every test. Keep measurement availability separately:
   // a partially observed building must never look like an always-selected building.
@@ -44,7 +45,7 @@
     });
     summaries.forEach((s,i)=>{if(shared[i])s.status=s.selected===s.total?'all':s.selected>0?'some':'none';});
     const counts={all:0,some:0,none:0,insufficient:0};summaries.forEach(s=>counts[s.status]++);
-    return {tests,rows:summaries,cohort,requested,counts,settings:{...settings},version:'ranking-stability-temperature-v4'};
+    return {tests,rows:summaries,cohort,requested,counts,settings:{...settings},version:'ranking-stability-adjustable-v5'};
   }
   const api={presets,scenarios,run};if(typeof module!=='undefined')module.exports=api;else root.RankingStability=Object.freeze(api);
 })(typeof window!=='undefined'?window:globalThis);

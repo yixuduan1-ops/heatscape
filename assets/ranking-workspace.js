@@ -35,7 +35,7 @@
   }
   function renderSelection(){
    if(!suite)return;const r=byId.get(selected),s=r?.rankStability;
-   const factors='weights, sampling extents and recent/historical heat blends';
+   const factors='outer weights, sampling extents and the internal H and I blends';
    const explanation=!s?'':s.status==='insufficient'
     ?`Only ${s.valid} of ${s.total} tests have sufficient evidence. Its shortlist consistency cannot be assessed across the full test set.`
     :s.status==='all'
@@ -48,10 +48,10 @@
    const groups=[];suite.tests.forEach((t,i)=>{if(i%3===0)groups.push([]);groups.at(-1).push({...t,testIndex:i});});
    $('stabilityTests').innerHTML=groups.map(group=>{
     const first=group[0],w=first.weights.map(x=>number(x*100,Math.abs(x*100-Math.round(x*100))<.001?0:1)).join('/');
-    return `<tr><td><strong>${w}</strong><small>${esc(first.label)} · heat blend ${Math.round(first.heatRecentWeight*100)}/${Math.round((1-first.heatRecentWeight)*100)}</small></td>${group.map(t=>{
+    return `<tr><td><strong>${w}</strong><small>${esc(first.label)} · heat blend ${Math.round(first.heatRecentWeight*100)}/${Math.round((1-first.heatRecentWeight)*100)} · I blend ${Math.round(first.incomeLowWeight*100)}/${Math.round((1-first.incomeLowWeight)*100)}</small></td>${group.map(t=>{
      const row=r?t.rows.find(x=>x.id===r.building_id):null;
-     const active=t.radius===state.radius&&Math.abs(t.heatRecentWeight-state.heatRecentWeight)<1e-7&&Math.abs(t.balance-state.balance)<1e-7&&Math.abs(t.building-state.building)<1e-7;
-     const title=`Apply ${t.label}, ${t.radius} m, recent heat ${Math.round(t.heatRecentWeight*100)}%. ${t.shortlisted} shortlisted from ${t.cohort}; score cutoff ${number(t.cutoff,2)}.`;
+     const active=t.radius===state.radius&&Math.abs(t.heatRecentWeight-state.heatRecentWeight)<1e-7&&Math.abs(t.incomeLowWeight-state.incomeLowWeight)<1e-7&&Math.abs(t.balance-state.balance)<1e-7&&Math.abs(t.building-state.building)<1e-7;
+     const title=`Apply ${t.label}, ${t.radius} m, recent heat ${Math.round(t.heatRecentWeight*100)}%, low-income share ${Math.round(t.incomeLowWeight*100)}%. ${t.shortlisted} shortlisted from ${t.cohort}; score cutoff ${number(t.cutoff,2)}.`;
      return `<td class="${active?'active-test':''}" data-test-id="${esc(t.id)}"><button data-apply-test="${t.testIndex}" title="${esc(title)}">${row?(row.rank===null?'—':number(row.rank)):number(t.shortlisted)}<small class="${row?.top?'test-yes':'test-no'}">${row?(row.rank===null?'No rank':row.top?'In':'Out'):'listed'}</small></button></td>`;
     }).join('')}</tr>`;
    }).join('');
@@ -62,6 +62,12 @@
    if(!suite)return;
    $('stabilitySummary').innerHTML=Object.entries(suite.counts).map(([status,count])=>`<span><i style="background:${colors[status]}"></i><b>${number(count)}</b> ${labels[status]}</span>`).join('');
    $('stabilityTestCount').textContent=`${suite.tests.length} tests`;
+   const nH=new Set(suite.tests.map(t=>t.heatRecentWeight)).size,nI=new Set(suite.tests.map(t=>t.incomeLowWeight)).size,nW=new Set(suite.tests.map(t=>t.balance+'/'+t.building)).size;
+   $('testDesignSummary').textContent=`${nW} outer weights × 3 extents × ${nH} H blends × ${nI} I blends = ${suite.tests.length} tests. Any custom share is included.`;
+   $('testDesignTitle').textContent=`All ${suite.tests.length} test combinations`;
+   const blends=k=>[...new Set(suite.tests.map(t=>t[k]))].map(w=>`${Math.round(100*w)}/${Math.round(100*(1-w))}`).join(' · ');
+   $('testDesignH').textContent=blends('heatRecentWeight');$('testDesignI').textContent=blends('incomeLowWeight');
+   $('testDesignOuter').textContent=[...new Map(suite.tests.map(t=>[t.label,t.weights.map(w=>number(100*w,Math.abs(100*w-Math.round(100*w))<.001?0:1)).join('/')])).values()].join(' · ');
    const consistent=all.filter(r=>r.rankStability.status==='all'&&(!$('council').value||r.lga_name===$('council').value)).length;
    $('stableMapActionCount').textContent=`${number(consistent)} buildings · in all ${suite.tests.length} tested settings`;
    $('showStableOnMap').disabled=consistent===0;
@@ -76,7 +82,7 @@
   }
   function update(next,id){
    state={...next};selected=id||null;
-   const nextKey=JSON.stringify([next.balance,next.building,next.topMode,next.topValue,'fixed-integrated']);
+   const nextKey=JSON.stringify([next.topMode,next.topValue,RankingStability.scenarios(next).map(t=>t.id)]);
    if(nextKey!==key){
     suite=RankingStability.run(all,state,reference);key=nextKey;
     suite.rows.forEach((s,i)=>all[i].rankStability=s);
@@ -88,7 +94,7 @@
   $('stableOnly').onchange=()=>{$('stabilityOnly').checked=$('stableOnly').checked;onFilter();render();};
   $('stabilitySearch').oninput=renderList;$('stabilityFilter').onchange=renderList;
   $('stabilityRows').onclick=e=>{const b=e.target.closest('[data-stability-id]');if(b)onSelect(b.dataset.stabilityId);};
-  $('stabilityTests').onclick=e=>{const b=e.target.closest('[data-apply-test]');if(!b)return;const t=suite.tests[Number(b.dataset.applyTest)];onSettings({radius:t.radius,heatRecentWeight:t.heatRecentWeight,balance:t.balance,building:t.building});};
+  $('stabilityTests').onclick=e=>{const b=e.target.closest('[data-apply-test]');if(!b)return;const t=suite.tests[Number(b.dataset.applyTest)];onSettings({radius:t.radius,heatRecentWeight:t.heatRecentWeight,incomeLowWeight:t.incomeLowWeight,balance:t.balance,building:t.building});};
   $('stabilityMap').onchange=()=>onMap($('stabilityMap').checked);$('stabilityViewMap').onclick=onViewMap;
   $('showStableOnMap').onclick=()=>{
    $('stabilityOnly').checked=true;$('stableOnly').checked=true;$('stabilityMap').checked=true;
@@ -101,10 +107,10 @@
   function setSize(){const topMode=$('priorityShortlistMode').value,max=topMode==='count'?all.length:100,topValue=Math.max(1,Math.min(max,Math.round(Number($('priorityShortlistValue').value)||1)));onSettings({topMode,topValue});}
   $('priorityShortlistMode').onchange=()=>{$('priorityShortlistValue').value=$('priorityShortlistMode').value==='count'?100:20;setSize();};$('priorityShortlistValue').onchange=setSize;
   $('exportStability').onclick=()=>{
-   const rows=matches().map(r=>({building_id:r.building_id,building_name:r.building_name,rank_current:r.rank,score_current:r.score,selected_tests:r.rankStability.selected,valid_tests:r.rankStability.valid,total_tests:r.rankStability.total,best_rank:r.rankStability.bestRank,worst_rank:r.rankStability.worstRank,stability:r.rankStability.status,shared_cohort:suite.cohort,shortlist_mode:state.topMode,shortlist_value:state.topValue,requested_positions:suite.requested,tests:suite.tests.map(t=>t.id).join(';'),current_radius:state.radius,current_heat_dataset:state.heatDataset,current_weights_H_I_B:HeatModel.weights(state.balance,state.building).join('/'),height_quality:r.height_quality,version:suite.version}));
-   download('HEATSCAPE_ranking_stability.csv',['building_id','building_name','rank_current','score_current','selected_tests','valid_tests','total_tests','best_rank','worst_rank','stability','shared_cohort','shortlist_mode','shortlist_value','requested_positions','tests','current_radius','current_heat_dataset','current_weights_H_I_B','height_quality','version'],rows);
+   const rows=matches().map(r=>({building_id:r.building_id,building_name:r.building_name,rank_current:r.rank,score_current:r.score,selected_tests:r.rankStability.selected,valid_tests:r.rankStability.valid,total_tests:r.rankStability.total,best_rank:r.rankStability.bestRank,worst_rank:r.rankStability.worstRank,stability:r.rankStability.status,shared_cohort:suite.cohort,shortlist_mode:state.topMode,shortlist_value:state.topValue,requested_positions:suite.requested,tests:suite.tests.map(t=>t.id).join(';'),current_radius:state.radius,current_heat_dataset:state.heatDataset,current_recent_heat_share:state.heatRecentWeight,current_low_income_share:state.incomeLowWeight,current_weights_H_I_B:HeatModel.weights(state.balance,state.building).join('/'),height_quality:r.height_quality,version:suite.version}));
+   download('HEATSCAPE_ranking_stability.csv',['building_id','building_name','rank_current','score_current','selected_tests','valid_tests','total_tests','best_rank','worst_rank','stability','shared_cohort','shortlist_mode','shortlist_value','requested_positions','tests','current_radius','current_heat_dataset','current_recent_heat_share','current_low_income_share','current_weights_H_I_B','height_quality','version'],rows);
   };
-  $('exportTests').onclick=()=>download('HEATSCAPE_test_settings.csv',['test','label','radius_m','heat_dataset','recent_heat_share','weight_H','weight_I','weight_B','cohort','valid_candidates','requested_positions','shortlisted','score_cutoff','shortlist_mode','shortlist_value','building_id','building_rank','building_selected'],suite.tests.map(t=>{const r=t.rows.find(r=>r.id===selected);return {test:t.id,label:t.label,radius_m:t.radius,heat_dataset:'fixed-integrated',recent_heat_share:t.heatRecentWeight,weight_H:t.weights[0],weight_I:t.weights[1],weight_B:t.weights[2],cohort:t.cohort,valid_candidates:t.eligible,requested_positions:t.requested,shortlisted:t.shortlisted,score_cutoff:t.cutoff,shortlist_mode:state.topMode,shortlist_value:state.topValue,building_id:selected,building_rank:r?.rank,building_selected:r?.top};}));
+  $('exportTests').onclick=()=>download('HEATSCAPE_test_settings.csv',['test','label','radius_m','heat_dataset','recent_heat_share','low_income_share','weight_H','weight_I','weight_B','cohort','valid_candidates','requested_positions','shortlisted','score_cutoff','shortlist_mode','shortlist_value','building_id','building_rank','building_selected'],suite.tests.map(t=>{const r=t.rows.find(r=>r.id===selected);return {test:t.id,label:t.label,radius_m:t.radius,heat_dataset:'fixed-integrated',recent_heat_share:t.heatRecentWeight,low_income_share:t.incomeLowWeight,weight_H:t.weights[0],weight_I:t.weights[1],weight_B:t.weights[2],cohort:t.cohort,valid_candidates:t.eligible,requested_positions:t.requested,shortlisted:t.shortlisted,score_cutoff:t.cutoff,shortlist_mode:state.topMode,shortlist_value:state.topValue,building_id:selected,building_rank:r?.rank,building_selected:r?.top};}));
   return {update,select,render,onlyStable:stable,colors,labels,getSuite:()=>suite};
  }
  window.RankingWorkspace={create};
