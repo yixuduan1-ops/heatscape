@@ -1,0 +1,49 @@
+#drawer.data-drawer{width:min(820px,58vw);max-height:calc(100dvh - 125px);background:#203653fc}
+#buildingValidation{margin-bottom:28px;color:#d6e1e8;font-size:14px;line-height:1.55}
+.validation-heading .eyebrow{font-size:10px;letter-spacing:1.3px;color:var(--teal)}
+.validation-heading h3{font-size:28px;color:var(--paper);margin:8px 0 12px}
+.validation-heading p{max-width:66ch}
+.validation-tabs{display:flex;gap:6px;border-bottom:1px solid var(--line);padding-bottom:12px;margin:19px 0 18px;flex-wrap:wrap}
+.validation-tabs button{font-size:13px;padding:8px 12px;background:transparent}
+.validation-tabs button[aria-pressed=true]{border-color:var(--teal);background:#2b485d;color:#f1eee0}
+.validation-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:16px 0}
+.validation-metrics>div{border-left:2px solid var(--gold);padding-left:13px}
+.validation-metrics strong{display:block;font:34px/1.15 Georgia,serif;color:var(--gold)}
+.validation-metrics span{display:block;font-size:12px;margin-top:5px}
+#buildingValidation h4{font:21px/1.25 Georgia,serif;color:var(--paper);margin:24px 0 12px}
+#buildingValidation h5{font-size:14px;color:var(--teal);margin:20px 0 10px}
+#buildingValidation .validation-note{font-size:12px;line-height:1.6;color:#b4c9d8}
+.validation-evidence-bars{display:grid;gap:9px;margin-bottom:14px}
+.validation-evidence-bars>div{display:grid;grid-template-columns:1fr auto;gap:0 10px;font-size:13px;border-bottom:3px solid #29445b;position:relative;padding-bottom:6px}
+.validation-evidence-bars i{position:absolute;height:3px;bottom:-3px;background:var(--teal);min-width:1px}
+.validation-evidence-bars b{color:var(--paper)}
+.validation-table-wrap{overflow:auto;margin:10px 0 14px}
+#buildingValidation table{border-collapse:collapse;width:100%;font-size:12px;text-align:left}
+#buildingValidation th{font-weight:600;color:#c6d9df}
+#buildingValidation td,#buildingValidation th{padding:9px 8px;border-bottom:1px solid #45607788;vertical-align:top}
+#buildingValidation thead{background:#172f48}
+#buildingValidation td{color:#d6e1e8}
+.validation-source{padding:14px 0;border-bottom:1px solid var(--line)}
+.validation-source p{margin:5px 0;font-size:13px}
+.validation-filters{display:grid;grid-template-columns:1fr 1fr;gap:8px 12px}
+.validation-filters label,#validationSearch{font-size:12px}
+.validation-filters select{font-size:12px;margin-top:5px;padding:9px;min-width:0}
+.validation-results-head{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:12px;margin-top:14px}
+.validation-results-head button{font-size:12px;padding:7px 10px}
+.validation-record-list{max-height:340px;overscroll-behavior:contain;border:1px solid var(--line)}
+.validation-record-list thead{position:sticky;top:0;z-index:1}
+.validation-record-list td:first-child{width:42%}
+.validation-record-list button{padding:0;border:0;background:none;text-align:left;color:#e6cd9e;font-size:13px;overflow-wrap:anywhere}
+.validation-record-list small{font-size:10px;overflow-wrap:anywhere;margin-top:5px}
+.validation-detail{scroll-margin-top:90px;padding:18px 0;margin-top:10px;border-top:2px solid var(--teal)}
+.validation-detail h4{margin-top:8px!important}
+.validation-status{color:var(--teal);font-weight:600}
+.validation-detail dl{display:grid;grid-template-columns:minmax(120px,35%) 1fr;gap:8px 18px;font-size:13px}
+.validation-detail dt{color:#b4c9d8}.validation-detail dd{margin:0;overflow-wrap:anywhere}
+.validation-property{border-left:2px solid #7e82a6;padding:4px 0 4px 15px;margin:16px 0}
+.validation-property small{font-size:12px}
+.validation-detail li{margin:6px 0;font-size:13px}
+#validationMore{font-size:12px}
+#buildingDataCheck{font-size:12px;color:var(--teal);text-align:left;margin-top:12px;padding:7px 0;border:0;background:transparent}
+@media(min-width:1100px){#app:has(#drawer.data-drawer:not([hidden])) .legend{left:auto;right:30px;max-width:300px}}
+@media(max-width:800px){#drawer.data-drawer{width:calc(100vw - 96px);max-height:calc(100dvh - 110px)}.validation-metrics{gap:10px}.validation-metrics strong{font-size:24px}.validation-metrics>div{padding-left:7px}.validation-metrics span{font-size:10px}.validation-filters{grid-template-columns:1fr}.validation-heading h3{font-size:24px}.validation-tabs{gap:4px}.validation-tabs button{font-size:11px;padding:7px}.validation-detail dl{grid-template-columns:1fr;gap:3px}.validation-detail dd{margin-bottom:8px}.validation-record-list{max-height:300px}}
