@@ -1,7 +1,7 @@
 {
-  "version": "heat-multidate-v1",
+  "version": "heat-integrated-v2",
   "processed": "16 October 2026",
-  "default": "landsat-20260107",
+  "default": "landsat-median",
   "datasets": [
     {
       "id": "landsat-20251229",
@@ -149,7 +149,7 @@
         }
       },
       "small_50m_area_count": 2384,
-      "heat_use": "Selectable H input, with date-specific solar geometry"
+      "heat_use": "Source evidence for the fixed multi-day H model"
     },
     {
       "id": "landsat-20260106",
@@ -297,7 +297,7 @@
         }
       },
       "small_50m_area_count": 2393,
-      "heat_use": "Selectable H input, with date-specific solar geometry"
+      "heat_use": "Source evidence for the fixed multi-day H model"
     },
     {
       "id": "landsat-20260107",
@@ -445,7 +445,7 @@
         }
       },
       "small_50m_area_count": 2397,
-      "heat_use": "Selectable H input, with date-specific solar geometry"
+      "heat_use": "Source evidence for the fixed multi-day H model"
     },
     {
       "id": "landsat-20260123",
@@ -593,7 +593,7 @@
         }
       },
       "small_50m_area_count": 2406,
-      "heat_use": "Selectable H input, with date-specific solar geometry"
+      "heat_use": "Source evidence for the fixed multi-day H model"
     },
     {
       "id": "landsat-20260130",
@@ -741,7 +741,7 @@
         }
       },
       "small_50m_area_count": 2408,
-      "heat_use": "Selectable H input, with date-specific solar geometry"
+      "heat_use": "Source evidence for the fixed multi-day H model"
     },
     {
       "id": "landsat-20260207",
@@ -889,7 +889,7 @@
         }
       },
       "small_50m_area_count": 2418,
-      "heat_use": "Selectable H input, with date-specific solar geometry"
+      "heat_use": "Source evidence for the fixed multi-day H model"
     },
     {
       "id": "landsat-20260215",
@@ -1037,7 +1037,7 @@
         }
       },
       "small_50m_area_count": 2429,
-      "heat_use": "Selectable H input, with date-specific solar geometry"
+      "heat_use": "Source evidence for the fixed multi-day H model"
     },
     {
       "id": "landsat-20260216",
@@ -1185,7 +1185,7 @@
         }
       },
       "small_50m_area_count": 2430,
-      "heat_use": "Selectable H input, with date-specific solar geometry"
+      "heat_use": "Source evidence for the fixed multi-day H model"
     },
     {
       "id": "landsat-20260223",
@@ -1333,7 +1333,7 @@
         }
       },
       "small_50m_area_count": 2440,
-      "heat_use": "Selectable H input, with date-specific solar geometry"
+      "heat_use": "Source evidence for the fixed multi-day H model"
     },
     {
       "id": "landsat-median",
@@ -1347,7 +1347,7 @@
       "grid_m": 30,
       "native_thermal_m": 100,
       "method": "Median of valid per-date weighted sun-exposed LST; requires ≥3 dates. Support fields report minima over contributing dates. Not a full-season average.",
-      "assumptions": "Buildings can have different valid-date sets. Clouds and scene selection can bias the summary; use the nine-date complete-case tests to inspect shortlist consistency. No single solar angle or shadow mask applies.",
+      "assumptions": "Median of at least three valid observations at each extent. Contributing dates can differ by building; this is not a seasonal mean or a continuous record. No single observation-time sun angle or shade boundary represents this median. Stability tests keep the multi-day input fixed and vary outer weights, extent and recent/historical heat blend.",
       "license": "Derived from USGS public-domain data",
       "coverage": {
         "50": {
@@ -1419,7 +1419,8 @@
       },
       "shapes_file": null,
       "shadows_file": null,
-      "files": []
+      "files": [],
+      "heat_use": "Source evidence for the fixed multi-day H model"
     },
     {
       "id": "csiro-2019-lst",
@@ -1532,7 +1533,8 @@
         }
       ],
       "shapes_file": null,
-      "shadows_file": null
+      "shadows_file": null,
+      "heat_use": "Parent/evidence layer; derived CSIRO UHI enters the historical branch, not a second LST score term"
     }
   ],
   "context_sources": [
@@ -1540,7 +1542,7 @@
       "id": "csiro-2019-uhi",
       "label": "CSIRO 2018–19 surface urban heat island (UHI)",
       "description": "Landsat-derived surface-temperature difference from an estimated non-urban vegetation baseline. Melbourne source scenes: 28 Jan and 24 Mar 2019. UHI is a temperature difference in °C, not absolute LST.",
-      "role": "Area/distance-weighted 50/100/150 m open-ground context for every building; displayed and exported, without adding a fourth score indicator.",
+      "role": "One third of historical temperature context after percentile conversion; historical branch capped at 30% of H by default.",
       "coverage_note": "2,573 / 2,573 candidates have valid 100 m UHI context.",
       "limits": "Historical mosaic; different retrieval from USGS Collection 2. No scene-specific pixel QA or per-date contribution map was supplied. It is not cooling, air temperature or a before/after evaluation.",
       "source_url": "https://doi.org/10.25919/5d8adf30f001e",
@@ -1559,7 +1561,7 @@
       "id": "vic-2018-uhi",
       "label": "Victoria 2018 urban heat & vegetation · Mesh Blocks",
       "description": "Department of Transport and Planning Cooling and Greening layer: UHI18_M (°C difference from non-urban baseline), PERANYVEG and PERANYTREE (%); source geography is 2016 Mesh Blocks.",
-      "role": "Match each footprint interior point to one source polygon. Show the area-level heat, vegetation and tree context in the building evidence; not an extra H/I/B weighting.",
+      "role": "UHI percentile supplies one third of historical temperature context. Vegetation/tree deficits supply 20%/30% of the historical branch. Shared Mesh Block values are area context.",
       "coverage_note": "Downloaded 6,976 polygons across all five councils. 2,573 / 2,573 candidates have a unique polygon match.",
       "limits": "Shared area values do not distinguish buildings within a Mesh Block. Point assignment is not a building survey. Missing or ambiguous spatial matches remain unavailable. Source geometry and vegetation predate the current building inventory.",
       "source_url": "https://discover.data.vic.gov.au/dataset/metropolitan-melbourne-urban-heat-islands-and-urban-vegetation-2018",
@@ -1578,7 +1580,7 @@
       "id": "climate-victoria",
       "label": "Climate Victoria · monthly maximum-temperature normals, 1981–2010",
       "description": "CSIRO Climate Victoria Maximum Temperature (3DS-M), version 4 (2020). Twelve monthly climatology rasters on a 9-arcsecond (~250 m) grid, representing near-surface air temperature about 1.2 m above ground. Based on station observations, spline interpolation, elevation and MODIS LST dependence.",
-      "role": "Sample all 12 monthly normals at the footprint interior point. Display as historical air-temperature context; never average into Landsat LST or add it to H.",
+      "role": "Mean of Dec/Jan/Feb 1981–2010 air-temperature normals, then percentile: one third of historical temperature context. All 12 months remain visible. Small climate differences can be amplified by ranks; this is an exploratory context term, not current heat exposure.",
       "coverage_note": "2,563 / 2,573 candidates have all 12 monthly normals.",
       "limits": "Only the 1981–2010 climatology archive was downloaded. The full 1981–2019 daily and monthly time-series archives are not loaded. This is a long-term normal, not a 2026 observation, indoor temperature or building-scale measurement.",
       "source_url": "https://data.csiro.au/collection/csiro:34178v4",
@@ -1597,6 +1599,6 @@
   "method": {
     "assumptions": "Scene-centre solar geometry, flat ground and vertical extrusions. Many building heights are estimated. No trees, terrain, facades or heat transfer are modelled. Neighbouring buildings beyond the study inventory may be missing. Geometry and image dates differ. At least three 30 m cells is an exploratory screening threshold, not proof that the native thermal sensor resolves this buffer."
   },
-  "peer_method_note": "Group 61 (pages 20–22, 31–32 and data/reference lists) describes SA1 temperature averaging and cites several heat sources, but does not identify the exact temperature file, version or averaging interval used in its final map. Its supplied methods diagram and narrative also differ in the final component weight. HEATSCAPE therefore documents the official datasets retrieved and does not claim exact replication of that report. ECOSTRESS in the report refers to a material spectral library, not a supplied thermal-image series.",
+  "peer_method_note": "The historical branch adapts Group 61’s 50% temperature, 20% vegetation and 30% canopy structure. It uses relative temperature percentiles and vegetation/canopy deficits, not the original SA1 risk bins. The exact original temperature file and the full original composite are not reproduced. These are exploratory screening assumptions.",
   "inventory_note": "9 unique Landsat scenes; each has ST_B10, QA_PIXEL, ST_QA and MTL. The extra Jan 6 MTL (1).txt is a byte-identical duplicate and is counted once. No original source files were modified. Files are recorded by name, size and SHA-256; derived model values are bundled locally for the public static site."
 }

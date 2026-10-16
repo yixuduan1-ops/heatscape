@@ -13,9 +13,8 @@
     const choices=presets.map(p=>({...p}));
     const live={balance:settings.balance??50,building:settings.building??20};
     if(!choices.some(p=>Math.abs(p.balance-live.balance)<1e-7&&Math.abs(p.building-live.building)<1e-7))choices.push({id:'custom',label:'Your weights',...live});
-    const datasets=settings.testDates?.length?settings.testDates:[settings.heatDataset??'landsat-20260107'];
-    return datasets.flatMap(heatDataset=>choices.flatMap(p=>[50,100,150].map(radius=>({
-      ...p,id:`${heatDataset}-${p.id}-${radius}`,heatDataset,radius,weights:M.weights(p.balance,p.building)
+    return [.6,.7,.8].flatMap(heatRecentWeight=>choices.flatMap(p=>[50,100,150].map(radius=>({
+      ...p,id:`integrated-${Math.round(heatRecentWeight*100)}-${p.id}-${radius}`,heatDataset:'landsat-median',heatRecentWeight,radius,weights:M.weights(p.balance,p.building)
     }))));
   }
   // Compare identical peers in every test. Keep measurement availability separately:
@@ -45,7 +44,7 @@
     });
     summaries.forEach((s,i)=>{if(shared[i])s.status=s.selected===s.total?'all':s.selected>0?'some':'none';});
     const counts={all:0,some:0,none:0,insufficient:0};summaries.forEach(s=>counts[s.status]++);
-    return {tests,rows:summaries,cohort,requested,counts,settings:{...settings},version:'ranking-stability-dates-v2'};
+    return {tests,rows:summaries,cohort,requested,counts,settings:{...settings},version:'ranking-stability-integrated-v3'};
   }
   const api={presets,scenarios,run};if(typeof module!=='undefined')module.exports=api;else root.RankingStability=Object.freeze(api);
 })(typeof window!=='undefined'?window:globalThis);

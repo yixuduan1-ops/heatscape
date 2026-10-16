@@ -1,15 +1,9 @@
 # HEATSCAPE
 
-Independent student research for targeted energy-support investigation across five inner Melbourne councils. Not an official VEU service or an automatic funding decision.
+A static research prototype for energy-support investigation across five Melbourne councils.
 
-The static application is deployed at https://yixuduan1-ops.github.io/heatscape/index.html from the main branch root. It includes 2,573 apartment candidates; the default observation remains 7 January 2026, at 100 m and H/I/B 40/40/20.
+Current production model: fixed multi-day Landsat heat plus a capped historical heat/greenness branch; SA1 economic pressure combines low-income share and a same-year area rent/income proxy. CLUE building type/age and Homes Victoria 2025 rent benchmarks are separate evidence. No building income is inferred from age/use.
 
-## Heat evidence
+See [model](model.html), [guide](instructions.html), [heat register](assets/heat-source-register.json), [matched housing evidence](assets/integrated-evidence.json) and [building validation](building-validation.html).
 
-Nine Landsat 8/9 dates (29 Dec 2025–23 Feb 2026) are cloud/quality screened and processed with their own solar geometry. The selector also offers a median requiring at least three valid dates, and the CSIRO 2018–19 historical LST product. Historical CSIRO UHI, Victorian 2018 Mesh Block heat/vegetation and Climate Victoria 1981–2010 monthly air-temperature normals are additional building context, not extra scoring weights. All sources, checksums, periods, coverage and limitations are in About data and assets/heat-source-register.json.
-
-## Calculation and stability
-
-H/I/B relative percentiles use shared weights. Eighteen tests combine six weight choices and three extents for the selected source. The nine-date suite contains 162 tests; custom weights add another set. Test ranks use a shared complete-evidence cohort; missing evidence is never zero need. The stability list, map isolation, test matrix and CSV exports stay linked.
-
-See [model equations](model.html), [user guide](instructions.html), [ranking stability](ranking-stability.md) and [building validation](building-validation.html). Original read-only input files and reproducible processing scripts are retained locally; only compact derived results and geometry are served to the browser.
+Default result: 2,561 scored; Swanston Central 84.6 / rank 34. Stability: 54 settings, common cohort 2,560, Top 20% 512 positions, 165 consistently shortlisted. These are prototype screening results, not verified energy need or outcomes.

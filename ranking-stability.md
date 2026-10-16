@@ -1,45 +1,7 @@
-# Ranking stability in Priorities
+# Ranking stability
 
-Open Priorities to see weights beside a building stability list. The compact desktop panel leaves the map visible; the test matrix sits below the weights. Smaller screens stack the sections. The building list has no pagination. Search by building name, alias, address or ID. List and map council filters do not recalculate ranks.
+Six outer H/I/B shares × three extents × three recent/historical heat blends = 54 tests; custom shares add nine. The fixed multi-day summary never changes source dates. The tested blends are 60/40, 70/30 and 80/20; default 70/30.
 
-## Tests
+Every test ranks the same complete-evidence cohort. Missing evidence has null selection and rank, not zero selection. Percentage size uses ceil(cohort × share); ties at cutoff enter. Common cohort 2,560; default Top 20% = 512 requested positions, 165 buildings selected in every test. Swanston Central 53/54, rank 4–580. Live 100 m ranks 2,561 candidates and requests 513 positions.
 
-The standard suite combines each of 50, 100 and 150 m with these H / I / B weights:
-
-| Weight choice | H | I | B |
-|---|---:|---:|---:|
-| Balanced | 40% | 40% | 20% |
-| Heat first | 60% | 20% | 20% |
-| Income first | 20% | 60% | 20% |
-| More building scale | 30% | 30% | 40% |
-| No building scale | 50% | 50% | 0% |
-| Equal shares | 1/3 | 1/3 | 1/3 |
-
-There are 18 tests for the selected heat source. Test all 9 Landsat dates produces 162 tests (9 × 6 × 3); custom weights add three tests per date. The median and historical source are not mixed into the nine-date suite. Equal shares use exact thirds; displayed percentages are rounded.
-
-Click a matrix cell to apply its date/source, radius and weights to the live score, rank and scatter. The matrix shows shortlist counts until a building is selected, then that building's rank and In/Out status for every test. The highlighted cell matches the active settings. The nine-date suite checks temporal sensitivity on the supplied dates. It is not validation against measured indoor conditions or a complete seasonal record.
-
-## Comparable ranks and missing evidence
-
-The overview explains that Consistent Top means shortlisted in every tested setting, and that the count changes with shortlist size and test settings. Selecting a building adds a plain-language interpretation of its actual result: all, some, none, or incomplete evidence. Consistent shortlist membership does not imply a constant rank, and missing evidence is not described as a failed selection.
-
-Each scenario uses the same H/I/B formula. Heat reference curves depend on source and extent; income and building references remain fixed. Tests do not modify raw measurements. The shared comparison cohort is the intersection of candidates with valid scores in every test. The same buildings and shortlist size are used throughout a suite:
-
-- Count mode: requested positions = min(requested count, shared cohort size).
-- Percentage mode: requested positions = ceil(shared cohort size × requested percentage / 100).
-- Each test sorts scores descending; exact score ties share the minimum rank and all ties at the cutoff enter the shortlist. Thus the final count can exceed requested positions.
-- Selection count is the number of tests where a comparable building enters the shortlist. Best/worst rank are its minimum/maximum rank across those tests.
-- A building missing a required observation in any test is marked “Insufficient evidence”. Its valid-test count is shown, but comparative selection count and rank range are blank. It is excluded from every comparative ranking, rather than changing the peers from test to test. Missing evidence is never coded as a failed selection.
-- “All tested settings” requires complete evidence and selection in every test. It is not a probability, proof of need, or a guarantee across untested settings.
-
-Reference distributions do not change with weights or shortlist filters. The active system score/rank still uses its normal eligible cohort; the list labels this “Now”. If the complete-case comparison cohort is smaller, its test ranks may differ from the normal active rank even with identical settings.
-
-## Filters, map and exports
-
-The “Only buildings in all tested settings” checkbox is shared with Shortlist and filters the map. It combines with any existing council and current-top filters. Stability map colours distinguish all, some, none and insufficient evidence. “View map” closes the workspace to expose the map; the colours and filters persist.
-
-“Export list” exports the matching stability rows, counts, range, current score/rank, test IDs, cohort, shortlist settings and height quality. “Export test table” exports exact weights, model, radius, cutoff, cohort, shortlist count and selected-building results. The existing Shortlist export also includes stability fields.
-
-Pixel support is available beneath the test matrix for a selected building: sunlit sample counts, valid area and sunlit area at each radius. Counts are resampled 30 m raster cells, not independent observations at the sensor's approximately 100 m thermal resolution. This diagnostic does not establish that a 50 m extent resolves local temperature adequately.
-
-The **Show consistent Top on map** button isolates buildings selected in every valid test, closes the panel and fits the map to them. It retains the selected council, clears the separate current-top filter, and hides other-building context. The map banner reports the visible count and test count; **Clear filter** restores the other candidates within the council filter. This means every tested setting, not every possible setting. While Priorities is open, selected buildings are centred in the uncovered part of the map.
+List/map filters do not change reference curves or ranks. Clicking a cell applies its weights, extent and blend; Reset restores 40/40/20 and 70/30. This is sensitivity to assumptions, not a validation against indoor conditions, actual incomes or energy outcomes. See [full model](model.html).

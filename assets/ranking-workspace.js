@@ -35,7 +35,7 @@
   }
   function renderSelection(){
    if(!suite)return;const r=byId.get(selected),s=r?.rankStability;
-   const factors=$('stabilityDates').checked?'weights, sampling extents and observation dates':'weights and sampling extents';
+   const factors='weights, sampling extents and recent/historical heat blends';
    const explanation=!s?'':s.status==='insufficient'
     ?`Only ${s.valid} of ${s.total} tests have sufficient evidence. Its shortlist consistency cannot be assessed across the full test set.`
     :s.status==='all'
@@ -48,10 +48,10 @@
    const groups=[];suite.tests.forEach((t,i)=>{if(i%3===0)groups.push([]);groups.at(-1).push({...t,testIndex:i});});
    $('stabilityTests').innerHTML=groups.map(group=>{
     const first=group[0],w=first.weights.map(x=>number(x*100,Math.abs(x*100-Math.round(x*100))<.001?0:1)).join('/');
-    return `<tr><td><strong>${w}</strong><small>${esc(first.label)} · ${datasets.find(d=>d.id===first.heatDataset)?.short_label||first.heatDataset}</small></td>${group.map(t=>{
+    return `<tr><td><strong>${w}</strong><small>${esc(first.label)} · heat blend ${Math.round(first.heatRecentWeight*100)}/${Math.round((1-first.heatRecentWeight)*100)}</small></td>${group.map(t=>{
      const row=r?t.rows.find(x=>x.id===r.building_id):null;
-     const active=t.radius===state.radius&&t.heatDataset===state.heatDataset&&Math.abs(t.balance-state.balance)<1e-7&&Math.abs(t.building-state.building)<1e-7;
-     const title=`Apply ${t.label}, ${t.radius} m, ${datasets.find(d=>d.id===t.heatDataset)?.short_label||t.heatDataset}. ${t.shortlisted} shortlisted from ${t.cohort}; score cutoff ${number(t.cutoff,2)}.`;
+     const active=t.radius===state.radius&&Math.abs(t.heatRecentWeight-state.heatRecentWeight)<1e-7&&Math.abs(t.balance-state.balance)<1e-7&&Math.abs(t.building-state.building)<1e-7;
+     const title=`Apply ${t.label}, ${t.radius} m, recent heat ${Math.round(t.heatRecentWeight*100)}%. ${t.shortlisted} shortlisted from ${t.cohort}; score cutoff ${number(t.cutoff,2)}.`;
      return `<td class="${active?'active-test':''}" data-test-id="${esc(t.id)}"><button data-apply-test="${t.testIndex}" title="${esc(title)}">${row?(row.rank===null?'—':number(row.rank)):number(t.shortlisted)}<small class="${row?.top?'test-yes':'test-no'}">${row?(row.rank===null?'No rank':row.top?'In':'Out'):'listed'}</small></button></td>`;
     }).join('')}</tr>`;
    }).join('');
@@ -59,7 +59,7 @@
    renderSupport(r);
   }
   function renderSupport(r){
-   $('thermalSupport').innerHTML=r?`<p class="support-name">${esc(r.building_name||r.building_id)} · selected heat source</p><table><thead><tr><th>Extent</th><th>30 m cells</th><th>Valid area</th><th>Sampled area</th></tr></thead><tbody>${[50,100,150].map(radius=>{const v=r.sunlit?.[radius];return `<tr><td>${radius} m</td><td>${number(v?.pixels)}</td><td>${number(v?.valid_pct,1)}%</td><td>${number(v?.area_m2)} m²</td></tr>`}).join('')}</tbody></table>`:'<p>Select a building to inspect its pixel support at each extent.</p>';
+   $('thermalSupport').innerHTML=r?`<p class="support-name">${esc(r.building_name||r.building_id)} · multi-day heat · minima over contributing dates</p><table><thead><tr><th>Extent</th><th>30 m cells</th><th>Valid area</th><th>Sampled area</th></tr></thead><tbody>${[50,100,150].map(radius=>{const v=r.sunlit?.[radius];return `<tr><td>${radius} m</td><td>${number(v?.pixels)}</td><td>${number(v?.valid_pct,1)}%</td><td>${number(v?.area_m2)} m²</td></tr>`}).join('')}</tbody></table>`:'<p>Select a building to inspect its pixel support at each extent.</p>';
   }
   function render(){
    if(!suite)return;
@@ -69,7 +69,7 @@
    $('stableMapActionCount').textContent=`${number(consistent)} buildings · in all ${suite.tests.length} tested settings`;
    $('showStableOnMap').disabled=consistent===0;
    $('stabilityScope').textContent=`Same ${number(suite.cohort)} buildings in every test · ${state.topMode==='count'?'Top '+state.topValue:'Top '+state.topValue+'%'} = ${number(suite.requested)} positions; cutoff ties included.`;
-   $('stabilityCoverage').textContent=$('stabilityDates').checked?`${number(100*suite.cohort/all.length,1)}% of all candidates have evidence for the complete date/extent suite. Cloud screening can leave a small, spatially uneven subset; these test ranks describe that subset.`:'';
+   $('stabilityCoverage').textContent=`${number(100*suite.cohort/all.length,1)}% of candidates have complete composite evidence. Missing inputs are excluded, not assigned zero need. Historical sources and climate ranks are exploratory; these tests check assumptions, not observed energy outcomes.`;
    $('stabilityExclusions').textContent=suite.counts.insufficient?`${number(suite.counts.insufficient)} candidates excluded: incomplete evidence. Missing data does not mean “not shortlisted”.`:'Every candidate has data for the full test set.';
    $('stabilityScopeFilter').textContent=$('council').value?`List and map filtered to ${$('council').value.toLowerCase()}; test ranks remain across all five councils.`:'Test ranks use all five councils; list filters do not recalculate them.';
    $('priorityShortlistMode').value=state.topMode;$('priorityShortlistValue').value=state.topValue;
@@ -79,21 +79,19 @@
   }
   function update(next,id){
    state={...next};selected=id||null;
-   const nextKey=JSON.stringify([next.balance,next.building,next.topMode,next.topValue,$('stabilityDates').checked?'all-dates':next.heatDataset]);
+   const nextKey=JSON.stringify([next.balance,next.building,next.topMode,next.topValue,'fixed-integrated']);
    if(nextKey!==key){
-    suite=RankingStability.run(all,{...state,testDates:$('stabilityDates').checked?datasets.filter(d=>d.kind==='observation').map(d=>d.id):null},reference);key=nextKey;
+    suite=RankingStability.run(all,state,reference);key=nextKey;
     suite.rows.forEach((s,i)=>all[i].rankStability=s);
    }
    render();
   }
   function select(id){if(selected===id)return;selected=id||null;renderSelection();}
-  $('stabilityDates').disabled=datasets.filter(d=>d.kind==='observation').length<2;
-  $('stabilityDates').onchange=()=>onSettings({});
   $('stabilityOnly').onchange=()=>{$('stableOnly').checked=stable();onFilter();render();};
   $('stableOnly').onchange=()=>{$('stabilityOnly').checked=$('stableOnly').checked;onFilter();render();};
   $('stabilitySearch').oninput=renderList;$('stabilityFilter').onchange=renderList;
   $('stabilityRows').onclick=e=>{const b=e.target.closest('[data-stability-id]');if(b)onSelect(b.dataset.stabilityId);};
-  $('stabilityTests').onclick=e=>{const b=e.target.closest('[data-apply-test]');if(!b)return;const t=suite.tests[Number(b.dataset.applyTest)];onSettings({radius:t.radius,heatDataset:t.heatDataset,balance:t.balance,building:t.building});};
+  $('stabilityTests').onclick=e=>{const b=e.target.closest('[data-apply-test]');if(!b)return;const t=suite.tests[Number(b.dataset.applyTest)];onSettings({radius:t.radius,heatRecentWeight:t.heatRecentWeight,balance:t.balance,building:t.building});};
   $('stabilityMap').onchange=()=>onMap($('stabilityMap').checked);$('stabilityViewMap').onclick=onViewMap;
   $('showStableOnMap').onclick=()=>{
    $('stabilityOnly').checked=true;$('stableOnly').checked=true;$('stabilityMap').checked=true;
@@ -109,7 +107,7 @@
    const rows=matches().map(r=>({building_id:r.building_id,building_name:r.building_name,rank_current:r.rank,score_current:r.score,selected_tests:r.rankStability.selected,valid_tests:r.rankStability.valid,total_tests:r.rankStability.total,best_rank:r.rankStability.bestRank,worst_rank:r.rankStability.worstRank,stability:r.rankStability.status,shared_cohort:suite.cohort,shortlist_mode:state.topMode,shortlist_value:state.topValue,requested_positions:suite.requested,tests:suite.tests.map(t=>t.id).join(';'),current_radius:state.radius,current_heat_dataset:state.heatDataset,current_weights_H_I_B:HeatModel.weights(state.balance,state.building).join('/'),height_quality:r.height_quality,version:suite.version}));
    download('HEATSCAPE_ranking_stability.csv',['building_id','building_name','rank_current','score_current','selected_tests','valid_tests','total_tests','best_rank','worst_rank','stability','shared_cohort','shortlist_mode','shortlist_value','requested_positions','tests','current_radius','current_heat_dataset','current_weights_H_I_B','height_quality','version'],rows);
   };
-  $('exportTests').onclick=()=>download('HEATSCAPE_test_settings.csv',['test','label','radius_m','heat_dataset','weight_H','weight_I','weight_B','cohort','valid_candidates','requested_positions','shortlisted','score_cutoff','shortlist_mode','shortlist_value','building_id','building_rank','building_selected'],suite.tests.map(t=>{const r=t.rows.find(r=>r.id===selected);return {test:t.id,label:t.label,radius_m:t.radius,heat_dataset:t.heatDataset,weight_H:t.weights[0],weight_I:t.weights[1],weight_B:t.weights[2],cohort:t.cohort,valid_candidates:t.eligible,requested_positions:t.requested,shortlisted:t.shortlisted,score_cutoff:t.cutoff,shortlist_mode:state.topMode,shortlist_value:state.topValue,building_id:selected,building_rank:r?.rank,building_selected:r?.top};}));
+  $('exportTests').onclick=()=>download('HEATSCAPE_test_settings.csv',['test','label','radius_m','heat_dataset','recent_heat_share','weight_H','weight_I','weight_B','cohort','valid_candidates','requested_positions','shortlisted','score_cutoff','shortlist_mode','shortlist_value','building_id','building_rank','building_selected'],suite.tests.map(t=>{const r=t.rows.find(r=>r.id===selected);return {test:t.id,label:t.label,radius_m:t.radius,heat_dataset:'fixed-integrated',recent_heat_share:t.heatRecentWeight,weight_H:t.weights[0],weight_I:t.weights[1],weight_B:t.weights[2],cohort:t.cohort,valid_candidates:t.eligible,requested_positions:t.requested,shortlisted:t.shortlisted,score_cutoff:t.cutoff,shortlist_mode:state.topMode,shortlist_value:state.topValue,building_id:selected,building_rank:r?.rank,building_selected:r?.top};}));
   return {update,select,render,onlyStable:stable,colors,labels,getSuite:()=>suite};
  }
  window.RankingWorkspace={create};

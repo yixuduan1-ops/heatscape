@@ -1,6 +1,6 @@
 # Dated building-shadow sampling
 
-Every Landsat observation has its own solar elevation, azimuth and date-specific open-ground mask. The Show building shadows checkbox only displays geometry already used in that observation’s score. The multi-date median and historical mosaic have no single observation-time overlay.
+Every Landsat observation has its own solar elevation, azimuth and date-specific open-ground mask. The fixed multi-day model has no single observation-time shadow overlay. Each observation contributes its separately screened geometry; the selected building’s outer extent remains visible. Date-specific masks are retained as source assets, not a user-selectable heat model.
 
 For complete equations and assumptions, see [model.html](model.html). The heat-source register includes metadata, source hashes and numerical integration checks for every date.
 

@@ -8,7 +8,7 @@ window.ShadowContext = (() => {
  function setDataset(next){if(meta.id===next.id)return;generation++;meta=next;data=null;load=null;failed=false;paint();redraw();if(enabled)ensure();}
  function select(r,rad){if(selection?.building_id===r?.building_id&&radius===rad)return;selection=r;radius=rad;paint();}
  function paint(){const host=$('shadowDetails');if(!host)return;host.hidden=!enabled;if(!enabled)return;
- if(!meta.shadows_file){host.innerHTML='<p>No single sun angle describes this summary. Select a Landsat observation date for its building-shadow geometry.</p>';return;}
+ if(!meta.shadows_file){host.innerHTML='<p>No single sun angle describes this multi-day summary. Date-specific shadows are included in processing; solar angles and valid observations are listed in About data.</p>';return;}
  if(!data){host.innerHTML=failed?'<p role="status">Shadow data could not load. Switch the layer off and on to retry.</p>':'<p role="status">Loading this date’s building shadows…</p>';return;}
  if(!selection){host.innerHTML='<p>Select a building to inspect its surroundings.</p>';return;}
  const q=data.buildings[selection.building_id],v=q?.radii[String(radius)];if(!v){host.innerHTML='<p>Shadow evidence is unavailable for this building.</p>';return;}
