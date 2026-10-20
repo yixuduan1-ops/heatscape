@@ -1,0 +1,393 @@
+{
+  "version": "temporal-v1",
+  "runDate": "2026-10-20",
+  "settings": {
+    "balance": 50,
+    "building": 20,
+    "topMode": "percent",
+    "topValue": 20,
+    "heatRecentWeight": 0.7,
+    "incomeLowWeight": 0.7
+  },
+  "method": "Fixed production percentile references; same complete cohort for median, mean and nine leave-one-date-out scenarios at each extent. At least three accepted dates remain. Ties included. Not external validation.",
+  "results": [
+    {
+      "radius": 50,
+      "cohort": 2491,
+      "excluded": 82,
+      "checks": [
+        {
+          "id": "median",
+          "label": "Current median",
+          "shortlisted": 499,
+          "overlap": 499,
+          "retainedPct": 100,
+          "jaccard": 1,
+          "meanRankChange": 0,
+          "maxRankChange": 0
+        },
+        {
+          "id": "mean",
+          "label": "Mean of accepted dates",
+          "shortlisted": 499,
+          "overlap": 427,
+          "retainedPct": 85.57114228456913,
+          "jaccard": 0.7478108581436077,
+          "meanRankChange": 134.18466479325573,
+          "maxRankChange": 641
+        },
+        {
+          "id": "landsat-20251229",
+          "label": "Leave out 20251229",
+          "omit": "landsat-20251229",
+          "shortlisted": 499,
+          "overlap": 449,
+          "retainedPct": 89.97995991983969,
+          "jaccard": 0.8178506375227687,
+          "meanRankChange": 98.67041348855881,
+          "maxRankChange": 682
+        },
+        {
+          "id": "landsat-20260106",
+          "label": "Leave out 20260106",
+          "omit": "landsat-20260106",
+          "shortlisted": 499,
+          "overlap": 445,
+          "retainedPct": 89.17835671342685,
+          "jaccard": 0.8047016274864376,
+          "meanRankChange": 93.68446407065436,
+          "maxRankChange": 512
+        },
+        {
+          "id": "landsat-20260107",
+          "label": "Leave out 20260107",
+          "omit": "landsat-20260107",
+          "shortlisted": 499,
+          "overlap": 441,
+          "retainedPct": 88.37675350701403,
+          "jaccard": 0.7917414721723519,
+          "meanRankChange": 105.37053392211963,
+          "maxRankChange": 450
+        },
+        {
+          "id": "landsat-20260123",
+          "label": "Leave out 20260123",
+          "omit": "landsat-20260123",
+          "shortlisted": 499,
+          "overlap": 430,
+          "retainedPct": 86.17234468937876,
+          "jaccard": 0.7570422535211268,
+          "meanRankChange": 126.82617422721799,
+          "maxRankChange": 664
+        },
+        {
+          "id": "landsat-20260130",
+          "label": "Leave out 20260130",
+          "omit": "landsat-20260130",
+          "shortlisted": 499,
+          "overlap": 448,
+          "retainedPct": 89.77955911823648,
+          "jaccard": 0.8145454545454546,
+          "meanRankChange": 94.12846246487355,
+          "maxRankChange": 567
+        },
+        {
+          "id": "landsat-20260207",
+          "label": "Leave out 20260207",
+          "omit": "landsat-20260207",
+          "shortlisted": 499,
+          "overlap": 479,
+          "retainedPct": 95.99198396793587,
+          "jaccard": 0.9229287090558767,
+          "meanRankChange": 72.82296266559615,
+          "maxRankChange": 705
+        },
+        {
+          "id": "landsat-20260215",
+          "label": "Leave out 20260215",
+          "omit": "landsat-20260215",
+          "shortlisted": 499,
+          "overlap": 460,
+          "retainedPct": 92.18436873747495,
+          "jaccard": 0.8550185873605948,
+          "meanRankChange": 89.33038940184665,
+          "maxRankChange": 645
+        },
+        {
+          "id": "landsat-20260216",
+          "label": "Leave out 20260216",
+          "omit": "landsat-20260216",
+          "shortlisted": 499,
+          "overlap": 433,
+          "retainedPct": 86.77354709418837,
+          "jaccard": 0.7663716814159292,
+          "meanRankChange": 120.32195905258932,
+          "maxRankChange": 471
+        },
+        {
+          "id": "landsat-20260223",
+          "label": "Leave out 20260223",
+          "omit": "landsat-20260223",
+          "shortlisted": 499,
+          "overlap": 429,
+          "retainedPct": 85.97194388777555,
+          "jaccard": 0.7539543057996485,
+          "meanRankChange": 133.93737454837415,
+          "maxRankChange": 718
+        }
+      ]
+    },
+    {
+      "radius": 100,
+      "cohort": 2495,
+      "excluded": 78,
+      "checks": [
+        {
+          "id": "median",
+          "label": "Current median",
+          "shortlisted": 499,
+          "overlap": 499,
+          "retainedPct": 100,
+          "jaccard": 1,
+          "meanRankChange": 0,
+          "maxRankChange": 0
+        },
+        {
+          "id": "mean",
+          "label": "Mean of accepted dates",
+          "shortlisted": 499,
+          "overlap": 428,
+          "retainedPct": 85.77154308617234,
+          "jaccard": 0.7508771929824561,
+          "meanRankChange": 136.7983967935872,
+          "maxRankChange": 699
+        },
+        {
+          "id": "landsat-20251229",
+          "label": "Leave out 20251229",
+          "omit": "landsat-20251229",
+          "shortlisted": 499,
+          "overlap": 452,
+          "retainedPct": 90.5811623246493,
+          "jaccard": 0.8278388278388278,
+          "meanRankChange": 99.88056112224449,
+          "maxRankChange": 661
+        },
+        {
+          "id": "landsat-20260106",
+          "label": "Leave out 20260106",
+          "omit": "landsat-20260106",
+          "shortlisted": 499,
+          "overlap": 444,
+          "retainedPct": 88.97795591182364,
+          "jaccard": 0.8014440433212996,
+          "meanRankChange": 93.75390781563127,
+          "maxRankChange": 524
+        },
+        {
+          "id": "landsat-20260107",
+          "label": "Leave out 20260107",
+          "omit": "landsat-20260107",
+          "shortlisted": 499,
+          "overlap": 447,
+          "retainedPct": 89.57915831663327,
+          "jaccard": 0.8112522686025408,
+          "meanRankChange": 107.04769539078157,
+          "maxRankChange": 454
+        },
+        {
+          "id": "landsat-20260123",
+          "label": "Leave out 20260123",
+          "omit": "landsat-20260123",
+          "shortlisted": 499,
+          "overlap": 425,
+          "retainedPct": 85.17034068136273,
+          "jaccard": 0.7417102966841187,
+          "meanRankChange": 130.10981963927856,
+          "maxRankChange": 653
+        },
+        {
+          "id": "landsat-20260130",
+          "label": "Leave out 20260130",
+          "omit": "landsat-20260130",
+          "shortlisted": 499,
+          "overlap": 450,
+          "retainedPct": 90.18036072144288,
+          "jaccard": 0.8211678832116789,
+          "meanRankChange": 95.52304609218437,
+          "maxRankChange": 586
+        },
+        {
+          "id": "landsat-20260207",
+          "label": "Leave out 20260207",
+          "omit": "landsat-20260207",
+          "shortlisted": 499,
+          "overlap": 478,
+          "retainedPct": 95.79158316633267,
+          "jaccard": 0.9192307692307692,
+          "meanRankChange": 74.34068136272545,
+          "maxRankChange": 672
+        },
+        {
+          "id": "landsat-20260215",
+          "label": "Leave out 20260215",
+          "omit": "landsat-20260215",
+          "shortlisted": 499,
+          "overlap": 462,
+          "retainedPct": 92.58517034068136,
+          "jaccard": 0.8619402985074627,
+          "meanRankChange": 90.66372745490982,
+          "maxRankChange": 621
+        },
+        {
+          "id": "landsat-20260216",
+          "label": "Leave out 20260216",
+          "omit": "landsat-20260216",
+          "shortlisted": 499,
+          "overlap": 436,
+          "retainedPct": 87.374749498998,
+          "jaccard": 0.7758007117437722,
+          "meanRankChange": 122.72064128256513,
+          "maxRankChange": 465
+        },
+        {
+          "id": "landsat-20260223",
+          "label": "Leave out 20260223",
+          "omit": "landsat-20260223",
+          "shortlisted": 499,
+          "overlap": 430,
+          "retainedPct": 86.17234468937876,
+          "jaccard": 0.7570422535211268,
+          "meanRankChange": 135.77875751503007,
+          "maxRankChange": 704
+        }
+      ]
+    },
+    {
+      "radius": 150,
+      "cohort": 2487,
+      "excluded": 86,
+      "checks": [
+        {
+          "id": "median",
+          "label": "Current median",
+          "shortlisted": 498,
+          "overlap": 498,
+          "retainedPct": 100,
+          "jaccard": 1,
+          "meanRankChange": 0,
+          "maxRankChange": 0
+        },
+        {
+          "id": "mean",
+          "label": "Mean of accepted dates",
+          "shortlisted": 498,
+          "overlap": 427,
+          "retainedPct": 85.7429718875502,
+          "jaccard": 0.7504393673110721,
+          "meanRankChange": 140.95536791314836,
+          "maxRankChange": 656
+        },
+        {
+          "id": "landsat-20251229",
+          "label": "Leave out 20251229",
+          "omit": "landsat-20251229",
+          "shortlisted": 498,
+          "overlap": 456,
+          "retainedPct": 91.56626506024097,
+          "jaccard": 0.8444444444444444,
+          "meanRankChange": 104.07398472054685,
+          "maxRankChange": 631
+        },
+        {
+          "id": "landsat-20260106",
+          "label": "Leave out 20260106",
+          "omit": "landsat-20260106",
+          "shortlisted": 498,
+          "overlap": 429,
+          "retainedPct": 86.144578313253,
+          "jaccard": 0.7566137566137566,
+          "meanRankChange": 93.30759951749096,
+          "maxRankChange": 567
+        },
+        {
+          "id": "landsat-20260107",
+          "label": "Leave out 20260107",
+          "omit": "landsat-20260107",
+          "shortlisted": 498,
+          "overlap": 443,
+          "retainedPct": 88.95582329317268,
+          "jaccard": 0.8010849909584087,
+          "meanRankChange": 112.88138319260153,
+          "maxRankChange": 549
+        },
+        {
+          "id": "landsat-20260123",
+          "label": "Leave out 20260123",
+          "omit": "landsat-20260123",
+          "shortlisted": 498,
+          "overlap": 421,
+          "retainedPct": 84.53815261044177,
+          "jaccard": 0.7321739130434782,
+          "meanRankChange": 140.4020908725372,
+          "maxRankChange": 643
+        },
+        {
+          "id": "landsat-20260130",
+          "label": "Leave out 20260130",
+          "omit": "landsat-20260130",
+          "shortlisted": 498,
+          "overlap": 451,
+          "retainedPct": 90.56224899598394,
+          "jaccard": 0.8275229357798165,
+          "meanRankChange": 96.27181342983515,
+          "maxRankChange": 663
+        },
+        {
+          "id": "landsat-20260207",
+          "label": "Leave out 20260207",
+          "omit": "landsat-20260207",
+          "shortlisted": 498,
+          "overlap": 473,
+          "retainedPct": 94.97991967871486,
+          "jaccard": 0.904397705544933,
+          "meanRankChange": 73.89786891837555,
+          "maxRankChange": 691
+        },
+        {
+          "id": "landsat-20260215",
+          "label": "Leave out 20260215",
+          "omit": "landsat-20260215",
+          "shortlisted": 498,
+          "overlap": 458,
+          "retainedPct": 91.96787148594377,
+          "jaccard": 0.8513011152416357,
+          "meanRankChange": 90.49859268194612,
+          "maxRankChange": 619
+        },
+        {
+          "id": "landsat-20260216",
+          "label": "Leave out 20260216",
+          "omit": "landsat-20260216",
+          "shortlisted": 498,
+          "overlap": 427,
+          "retainedPct": 85.7429718875502,
+          "jaccard": 0.7504393673110721,
+          "meanRankChange": 128.06674708484118,
+          "maxRankChange": 558
+        },
+        {
+          "id": "landsat-20260223",
+          "label": "Leave out 20260223",
+          "omit": "landsat-20260223",
+          "shortlisted": 498,
+          "overlap": 423,
+          "retainedPct": 84.93975903614458,
+          "jaccard": 0.7382198952879581,
+          "meanRankChange": 144.00562927221551,
+          "maxRankChange": 698
+        }
+      ]
+    }
+  ]
+}
